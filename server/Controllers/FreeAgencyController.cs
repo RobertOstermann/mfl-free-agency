@@ -70,6 +70,7 @@ namespace MFL_Manager.Controllers
             );
             Player JMarrChase = new Player(
                 "J'Marr Chase",
+                "jmarr-chase.jpg",
                 "Homelander",
                 "Bengals",
                 "WR",
@@ -80,6 +81,7 @@ namespace MFL_Manager.Controllers
             );
             Player MarkAndrews = new Player(
                 "Mark Andrews",
+                "mark-andrews.jpg",
                 "Power",
                 "Ravens",
                 "TE",
@@ -100,6 +102,7 @@ namespace MFL_Manager.Controllers
             );
             Player MikeWilliams = new Player(
                 "Mike Williams",
+                "mike-williams.jpg",
                 "Benchwarmers",
                 "Chargers",
                 "WR",
