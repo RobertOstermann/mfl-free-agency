@@ -1,0 +1,67 @@
+@import "~styles/MFLManagerColors";
+
+:global(.card).card-roster {
+  height: 100%;
+  min-height: 75vh;
+  min-width: 15.5rem;
+  border-width: 0.2rem;
+}
+
+:global(.card-body).card-body {
+  overflow-x: auto;
+  overflow-y: scroll;
+  height: 40vh;
+}
+
+:global(.card-footer).card-footer {
+  padding-bottom: 0rem;
+}
+
+:global(.row).row-header,
+:global(.row).row-player {
+  flex-wrap: nowrap;
+  margin-bottom: 0.5rem;
+}
+
+.col-header {
+  font-family: "Roboto", sans-serif;
+  font-size: x-large;
+}
+
+.col-team,
+.col-team-inactive {
+  font-family: "Roboto Mono", monospace;
+  font-size: x-large;
+}
+
+.col-team-inactive {
+  text-decoration: line-through $red solid 0.15rem;
+}
+
+.col-player {
+  font-family: "Roboto Mono", monospace;
+  font-size: large;
+}
+
+.card-header {
+  font-family: "Roboto", sans-serif;
+  font-size: xx-large;
+}
+
+.row-team-data {
+  margin-bottom: 0.5rem;
+}
+
+.col-label,
+.col-team-data {
+  font-family: "Roboto", sans-serif;
+  font-size: larger;
+}
+
+.col-team-data {
+  text-align: right;
+}
+
+/* Small devices (portrait tablets and large phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+}

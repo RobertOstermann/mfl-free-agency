@@ -1,0 +1,17 @@
+@import "~styles/MFLManagerColors";
+
+:global(.card).chatbox {
+  height: 100%;
+  min-height: 75vh;
+  min-width: 15.5rem;
+  border-width: 0.2rem;
+}
+
+:global(.card-footer).chatbox-footer {
+  padding-bottom: 0rem;
+}
+
+.chatbox-body {
+  height: 60vh;
+  overflow-y: scroll;
+}

@@ -1,0 +1,46 @@
+@import "~styles/MFLManagerColors";
+
+.teamcard--col {
+  padding: 1rem;
+}
+
+.teamcard:global(.card) {
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+  min-width: 12rem;
+  max-width: 15rem;
+  border: 0.15rem solid $teamcard-border;
+}
+
+.teamcard:hover {
+  cursor: pointer;
+  border-color: $teamcard-border-hover;
+}
+
+.teamcard.active {
+  border-color: $teamcard-border-active;
+}
+.teamcard.active:hover {
+  border-color: $teamcard-border-active-hover;
+}
+
+.teamcard.taken {
+  border-color: $teamcard-border-taken;
+}
+.teamcard.taken:hover {
+  border-color: $teamcard-border-taken-hover;
+}
+
+.teamcard--body:global(.card-body) {
+  padding-bottom: 1rem;
+}
+
+.teamcard-spinner {
+  display: block;
+  text-align: center;
+}
+
+.teamcard-spinner-hidden {
+  display: none;
+}

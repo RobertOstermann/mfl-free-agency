@@ -1,0 +1,13 @@
+@import "~styles/MFLManagerColors";
+
+.input-group-roster {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+:global(.input-group).input-group-roster,
+:global(.input-group-text).input-group-text-team,
+:global(.form-control).form-control-teams {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}

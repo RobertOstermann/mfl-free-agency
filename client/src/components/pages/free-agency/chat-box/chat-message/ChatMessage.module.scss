@@ -1,0 +1,75 @@
+@import "~styles/MFLManagerColors";
+
+// Card
+.chatmessage-card-receive,
+.chatmessage-card-receive-direct,
+.chatmessage-card-receive-server,
+.chatmessage-card-send,
+.chatmessage-card-send-direct {
+  min-width: 10rem;
+  font-size: medium;
+  border-width: 0.15rem;
+}
+
+:global(.card).chatmessage-card-receive-direct,
+:global(.card).chatmessage-card-send-direct {
+  border-color: $blue;
+}
+
+:global(.card).chatmessage-card-receive-server {
+  border-color: $red;
+}
+
+.chatmessage-card-receive,
+.chatmessage-card-receive-direct,
+.chatmessage-card-receive-server {
+  margin-top: 1rem;
+  margin-left: 0.1rem;
+  margin-right: 5rem;
+}
+
+.chatmessage-card-send,
+.chatmessage-card-send-direct {
+  margin-top: 1rem;
+  margin-left: 5rem;
+  margin-right: 0.1rem;
+}
+// Body
+:global(.card-body).chatmessage-body-receive,
+:global(.card-body).chatmessage-body-receive-direct,
+:global(.card-body).chatmessage-body-receive-server,
+:global(.card-body).chatmessage-body-send,
+:global(.card-body).chatmessage-body-send-direct {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+// Text
+.chatmessage-text-receive,
+.chatmessage-text-receive-direct,
+.chatmessage-text-receive-server,
+.chatmessage-text-send,
+.chatmessage-text-send-direct {
+  font-size: large;
+}
+// Footer
+:global(.card-footer).chatmessage-footer-receive,
+:global(.card-footer).chatmessage-footer-receive-direct,
+:global(.card-footer).chatmessage-footer-receive-server,
+:global(.card-footer).chatmessage-footer-send,
+:global(.card-footer).chatmessage-footer-send-direct {
+  font-size: medium;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.chatmessage-footer-receive-direct,
+.chatmessage-footer-send-direct {
+  color: $blue;
+}
+
+.chatmessage-footer-receive-server {
+  color: $black;
+}

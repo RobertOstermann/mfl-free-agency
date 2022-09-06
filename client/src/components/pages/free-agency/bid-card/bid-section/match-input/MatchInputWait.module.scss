@@ -1,0 +1,31 @@
+@import "~styles/MFLManagerColors";
+
+.input-group-lead-bid,
+.toggle-button-group-years,
+.input-group-match {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+:global(.btn).button-decrease,
+:global(.btn).button-increase,
+:global(.btn).toggle-button-years,
+:global(.btn).button-opt-out,
+:global(.btn).button-match {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}
+
+.button-opt-out,
+.button-match {
+  width: 45%;
+}
+
+.button-opt-out {
+  margin: 0 auto 0 0;
+}
+
+.button-match {
+  margin: 0 0 0 auto;
+}

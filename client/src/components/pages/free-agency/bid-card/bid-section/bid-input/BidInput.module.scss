@@ -1,0 +1,35 @@
+@import "~styles/MFLManagerColors";
+
+.bidinput-number {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.bidinput-buttons {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+:global(.btn).bidinput-optout-button,
+:global(.btn).bidinput-submit-button,
+:global(.btn).bidinput-increase-button,
+:global(.btn).bidinput-decrease-button,
+:global(.btn).bidinput-number-input {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}
+
+.bidinput-optout-button,
+.bidinput-submit-button {
+  width: 45%;
+}
+
+.bidinput-optout-button {
+  margin: 0 auto 0 0;
+}
+
+.bidinput-submit-button {
+  margin: 0 0 0 auto;
+}

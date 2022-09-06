@@ -1,0 +1,22 @@
+{
+  "name": "mfl_manager",
+  "version": "0.1.0",
+  "scripts": {
+    "install": "cd client && npm install",
+    "start": "cd server && dotnet run",
+    "watch": "cd server && dotnet watch run",
+    "build": "cd client && npm run build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

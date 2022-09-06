@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "name": "Yellowstone",
+      "division": "AFC",
+      "image": "Yellowstone.gif"
+    },
+    {
+      "name": "The Homelander",
+      "division": "AFC",
+      "image": "Homelander.gif"
+    },
+    {
+      "name": "Pigeon Boys",
+      "division": "AFC",
+      "image": "PigeonBoys.gif"
+    },
+    {
+      "name": "Dactyls",
+      "division": "AFC",
+      "image": "Dactyls.gif"
+    },
+    {
+      "name": "ODBs",
+      "division": "AFC",
+      "image": "ODBs.gif"
+    },
+    {
+      "name": "Storm Dynasty",
+      "division": "NFC",
+      "image": "StormDynasty.gif"
+    },
+    {
+      "name": "Benchwarmers",
+      "division": "NFC",
+      "image": "Benchwarmers.gif"
+    },
+    {
+      "name": "Gorillas",
+      "division": "NFC",
+      "image": "Gorillas.gif"
+    },
+    {
+      "name": "Power",
+      "division": "NFC",
+      "image": "Power.gif"
+    },
+    {
+      "name": "Ram",
+      "division": "NFC",
+      "image": "Ram.gif"
+    }
+  ]
+}

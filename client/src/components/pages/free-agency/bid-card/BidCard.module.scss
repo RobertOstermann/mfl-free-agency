@@ -1,0 +1,36 @@
+@import "~styles/MFLManagerColors";
+
+:global(.card).bidcard {
+  height: 100%;
+  min-height: 75vh;
+  min-width: 15.5rem;
+  border-width: 0.2rem;
+}
+
+:global(.card-footer).bidcard-footer {
+  padding-bottom: 0rem;
+}
+
+.bidcard-label {
+  text-align: center;
+  padding-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.bidcard-button,
+.bidcard-text {
+  font-family: "Roboto", sans-serif;
+}
+
+.commissioner-button {
+  font-family: "Roboto", sans-serif;
+}
+
+.bidcard-spinner {
+  display: block;
+  text-align: center;
+}
+
+.bidcard-spinner-hidden {
+  display: none;
+}

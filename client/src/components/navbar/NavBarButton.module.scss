@@ -1,0 +1,30 @@
+@import "~styles/MFLManagerColors";
+
+:global(.nav-link) .navbar-btn {
+  width: 8.5rem;
+  font-weight: bold;
+  font-size: large;
+  color: $navbar-button-text;
+  background-color: $navbar-button-background;
+}
+
+:global(.nav-link) .navbar-btn:hover {
+  color: $navbar-button-hover-text;
+  background-color: $navbar-button-hover-background;
+}
+
+:global(.nav-link) :global(.btn).navbar-btn:active {
+  color: $navbar-button-hover-text;
+  background-color: $navbar-button-hover-background;
+}
+
+.nav-link-active .navbar-btn:focus {
+  color: $navbar-button-active-text;
+  background-color: $navbar-button-active-background;
+  box-shadow: none;
+}
+
+.nav-link-active .navbar-btn {
+  color: $navbar-button-active-text;
+  background-color: $navbar-button-active-background;
+}

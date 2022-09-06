@@ -1,0 +1,19 @@
+@import "~styles/MFLManagerColors";
+
+.input-group-lead-bid,
+.input-group-resume-bidding {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+:global(.btn).button-decrease,
+:global(.btn).button-increase,
+:global(.btn).button-resume-bidding {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}
+
+.button-resume-bidding {
+  width: 100%;
+}

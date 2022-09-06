@@ -1,0 +1,27 @@
+@import "~styles/MFLManagerColors";
+
+.finalbidinput-number,
+.finalbidinput-years,
+.finalbidinput-buttons {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+:global(.btn).finalbidinput-optout-button,
+:global(.btn).finalbidinput-submit-button,
+:global(.btn).finalbidinput-increase-button,
+:global(.btn).finalbidinput-decrease-button,
+:global(.btn).finalbidinput-years-button,
+:global(.btn).finalbidinput-number-input {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}
+
+.finalbidinput-years-button.active {
+}
+
+.finalbidinput-submit-button {
+  width: 100%;
+  margin: 0 auto;
+}

@@ -1,0 +1,62 @@
+@import "~styles/MFLManagerColors";
+
+.header {
+  margin-bottom: 7.5rem;
+}
+
+:global(#navbar.navbar) {
+  text-align: center;
+  padding: 0 5vw;
+}
+
+:global(#navbar.navbar-brand) {
+  display: none;
+}
+
+:global(#navbar-toggle.navbar-brand) {
+  font-family: "Roboto", sans-serif;
+  font-size: 3rem;
+  margin: auto;
+  border: none;
+}
+
+.highlight-blue {
+  font-family: "Permanent Marker", sans-serif;
+  color: $blue;
+}
+
+.highlight-red {
+  font-family: "Permanent Marker", sans-serif;
+  color: $red;
+}
+
+.highlight-white {
+  font-family: "Permanent Marker", sans-serif;
+  color: $white;
+}
+
+.highlight-black {
+  font-family: "Permanent Marker", sans-serif;
+  color: $black;
+}
+
+/* Small devices (portrait tablets and large phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  :global(#navbar.navbar-brand) {
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-size: 3rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

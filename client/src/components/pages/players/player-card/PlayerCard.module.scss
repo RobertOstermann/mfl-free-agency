@@ -1,0 +1,26 @@
+@import "~styles/MFLManagerColors";
+
+.playercard--col {
+  padding: 1rem;
+}
+
+.playercard:global(.card) {
+  margin: 0 auto;
+  height: 100%;
+  min-width: 12rem;
+  max-width: 20rem;
+  border: 0.15rem solid $teamcard-border;
+}
+
+.playercard--body:global(.card-body) {
+  padding-bottom: 1rem;
+}
+
+.playercard-spinner {
+  display: block;
+  text-align: center;
+}
+
+.playercard-spinner-hidden {
+  display: none;
+}

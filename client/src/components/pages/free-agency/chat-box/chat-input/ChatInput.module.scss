@@ -1,0 +1,19 @@
+@import "~styles/MFLManagerColors";
+
+.chatinput-receiver {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.chatinput-message {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+:global(.input-group-text).chatinput-receiver-text,
+:global(.btn).chatinput-receiver-button,
+:global(.form-control).chatinput-message-text,
+:global(.btn).chatinput-message-button {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}

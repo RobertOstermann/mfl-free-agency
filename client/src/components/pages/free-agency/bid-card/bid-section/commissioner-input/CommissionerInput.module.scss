@@ -1,0 +1,38 @@
+@import "~styles/MFLManagerColors";
+
+.input-group-players,
+.input-group-start {
+  margin: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+:global(.btn).button-previous,
+:global(.btn).button-next,
+:global(.btn).button-reset,
+:global(.btn).button-sold,
+:global(.btn).button-start {
+  font-family: "Roboto", sans-serif;
+  border-radius: 0;
+}
+
+.button-previous,
+.button-next,
+.button-reset,
+.button-sold {
+  width: 45%;
+}
+
+.button-previous,
+.button-reset {
+  margin: 0 auto 0 0;
+}
+
+.button-next,
+.button-sold {
+  margin: 0 0 0 auto;
+}
+
+.button-start {
+  width: 100%;
+}
