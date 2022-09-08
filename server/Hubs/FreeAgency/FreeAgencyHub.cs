@@ -189,7 +189,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                 }
                 else
                 {
-                    if (_matchInProgress && player != null && !string.IsNullOrWhiteSpace(player.OriginalRights) && team.Equals(player.OriginalRights))
+                    if (_matchInProgress && player != null && !string.IsNullOrWhiteSpace(player.OriginalRights) && team.Name.Equals(player.OriginalRights))
                     {
                         await Clients.Caller.GrantMatchPermissions(_contractYears);
                     }
