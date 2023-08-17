@@ -30,25 +30,14 @@ function HomePage() {
   }, [setTeamData]);
 
   const createTeamCards = () => {
-    const images: any = Object.entries(
-      import.meta.glob("../../../data/images/teams/*", {
-        eager: true,
-      }),
-    );
-
     return teamDataLoaded ? (
       teamData.data.map((team: any) => {
-        const image = images.find((x: any) => {
-          const path: string = x[0];
-          return path.includes(team.image);
-        });
-
         return (
           <TeamCard
             key={team.name}
             team={team.name}
             league={team.division}
-            src={(new URL(image[0], import.meta.url)).href}
+            src={`images/teams/${team.image}`}
           />
         );
       })

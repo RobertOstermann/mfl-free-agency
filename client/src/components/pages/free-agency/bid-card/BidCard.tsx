@@ -46,18 +46,10 @@ function BidCard() {
   const getSource = (): string | undefined => {
     let src = undefined;
     try {
-      const image = playerImages.find((x: any) => {
-        const path: string = x[0];
-        return path.includes(imageSrc);
-      });
-      src = (new URL(image[0], import.meta.url)).href;
+      src = `/images/players/${imageSrc}`;
     } catch (error) {
       try {
-        const image = playerImages.find((x: any) => {
-          const path: string = x[0];
-          return path.includes("football-field.jpg");
-        });
-        src = (new URL(image[0], import.meta.url)).href;
+        src = "/imagesplayers/football-field.jpg";
       } catch (error) {
         src = undefined;
       }

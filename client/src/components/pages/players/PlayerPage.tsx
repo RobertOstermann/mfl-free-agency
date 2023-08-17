@@ -39,24 +39,13 @@ function PlayerPage() {
   }, [connection]);
 
   const createPlayerCards = () => {
-    const playerImages: any = Object.entries(
-      import.meta.glob("../../../data/images/players/*", {
-        eager: true,
-      }),
-    );
-
     return playerDataLoaded ? (
       playerData.map((player: any, index: any) => {
-        const image = playerImages.find((x: any) => {
-          const path: string = x[0];
-          return path.includes(player.src);
-        });
-
         return (
           <PlayerCard
             key={index}
             player={player.name}
-            src={(new URL(image[0], import.meta.url)).href}
+            src={`images/players/${player.src}`}
             teamNFL={player.nflTeam}
             teamMFL={player.mflTeam}
             salary={player.salary}
