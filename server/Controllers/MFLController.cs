@@ -6,7 +6,7 @@ namespace server.Controllers
     [Route("api/v1/mfl")]
     public class MFLController : ControllerBase
     {
-        private const string baseURL = "https://www54.myfantasyleague.com/2022";
+        private const string baseURL = "https://www54.myfantasyleague.com/2023";
 
         private const string leagueId = "30916";
 

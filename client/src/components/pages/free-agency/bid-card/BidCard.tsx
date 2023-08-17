@@ -18,12 +18,6 @@ function BidCard() {
   const [subtitle, setSubtitle] = useState("Starting Soon");
   const mountedRef = useRef(true);
 
-  const playerImages: any = Object.entries(
-    import.meta.glob("../../../../data/images/players/*", {
-      eager: true,
-    }),
-  );
-
   useEffect(() => {
     mountedRef.current = true;
 
