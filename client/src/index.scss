@@ -1,5 +1,3 @@
-@import "~styles/MFLManagerColors";
-
 $theme-colors: (
   "primary": $blue,
   "secondary": $grey,
@@ -9,6 +7,8 @@ $theme-colors: (
   "dark": $black,
   "navbar": $navbar,
 );
+
+$min-contrast-ratio: 1;
 
 @import "/node_modules/bootstrap/scss/bootstrap.scss";
 

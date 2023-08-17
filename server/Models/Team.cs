@@ -1,8 +1,4 @@
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace MFL_Manager.Models
+namespace server.Models
 {
     public class Team
     {

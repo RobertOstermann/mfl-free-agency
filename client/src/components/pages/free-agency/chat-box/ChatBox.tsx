@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import ChatInput from "./chat-input/ChatInput";
 import ChatList from "./chat-list/ChatList";
 import ChatMessageType from "./chat-message/ChatMessageType";
 
 import styles from "./ChatBox.module.scss";
 
-function ChatBox(props: any) {
-  const { connection } = props;
+function ChatBox() {
+  const connection = useBoundStore((state) => state.connection);
+
   const [messages, setMessages] = useState<any>([]);
   const [messagePermissions, setMessagePermissions] = useState<any>(false);
   const latestMessages = useRef<any>(null);
@@ -27,7 +29,7 @@ function ChatBox(props: any) {
         () => {
           if (!mountedRef.current) return null;
           setMessagePermissions(true);
-        }
+        },
       );
 
       connection.on(
@@ -35,7 +37,7 @@ function ChatBox(props: any) {
         () => {
           if (!mountedRef.current) return null;
           setMessagePermissions(false);
-        }
+        },
       );
 
       connection.on(
@@ -50,7 +52,7 @@ function ChatBox(props: any) {
             type: ChatMessageType.ReceiveMessage,
           });
           setMessages(updatedMessages);
-        }
+        },
       );
       connection.on(
         FreeAgencyHub.FreeAgency.Message.ReceiveMessageDirect,
@@ -64,7 +66,7 @@ function ChatBox(props: any) {
             type: ChatMessageType.ReceiveDirectMessage,
           });
           setMessages(updatedMessages);
-        }
+        },
       );
       connection.on(
         FreeAgencyHub.FreeAgency.Message.ReceiveMessageInformation,
@@ -78,7 +80,7 @@ function ChatBox(props: any) {
             type: ChatMessageType.ReceiveServerMessage,
           });
           setMessages(updatedMessages);
-        }
+        },
       );
       connection.on(
         FreeAgencyHub.FreeAgency.Message.SendMessage,
@@ -91,7 +93,7 @@ function ChatBox(props: any) {
             type: ChatMessageType.SendMessage,
           });
           setMessages(updatedMessages);
-        }
+        },
       );
       connection.on(
         FreeAgencyHub.FreeAgency.Message.SendMessageDirect,
@@ -105,7 +107,7 @@ function ChatBox(props: any) {
             type: ChatMessageType.SendDirectMessage,
           });
           setMessages(updatedMessages);
-        }
+        },
       );
     }
 
@@ -129,7 +131,7 @@ function ChatBox(props: any) {
         <ChatList messages={messages} />
       </Card.Body>
       <Card.Footer className={styles["chatbox-footer"]}>
-        <ChatInput connection={connection} permissions={messagePermissions} />
+        <ChatInput permissions={messagePermissions} />
       </Card.Footer>
     </Card>
   );

@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 
 import styles from "./BidInput.module.scss";
 
 function BidInput(props: any) {
   const {
-    connection,
     leadBid,
     currentBid,
     updateCurrentBid,
@@ -16,6 +16,8 @@ function BidInput(props: any) {
     submitBid,
   } = props;
   const inputRef = useRef<any>(null);
+
+  const connection = useBoundStore((state) => state.connection);
 
   useEffect(() => {
     inputRef.current.value = currentBid;
@@ -29,7 +31,7 @@ function BidInput(props: any) {
 
   const optOut = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.OptOut)
+      ?.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.OptOut)
       .catch((error: any) => {
         return console.error(error.toString());
       });

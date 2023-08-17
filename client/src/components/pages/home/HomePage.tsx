@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import TeamCard from "./team-card/TeamCard";
 import TeamData from "./TeamData.json";
 
 import styles from "./HomePage.module.scss";
 
-function HomePage(props: any) {
-  const { connection } = props;
-  const history = useHistory();
+function HomePage() {
+  const connection = useBoundStore((state) => state.connection);
 
   const [teamData, setTeamData] = useState<any>(null);
   const [teamDataLoaded, setTeamDataLoaded] = useState<any>(false);
@@ -23,7 +22,7 @@ function HomePage(props: any) {
         connection.invoke(FreeAgencyHub.Invoke.GetTeams);
       });
     }
-  }, [connection, history]);
+  }, [connection, location.pathname]);
 
   useEffect(() => {
     setTeamData(TeamData);
@@ -31,17 +30,25 @@ function HomePage(props: any) {
   }, [setTeamData]);
 
   const createTeamCards = () => {
-    const teamImages = require.context("data/images/teams", true);
+    const images: any = Object.entries(
+      import.meta.glob("../../../data/images/teams/*", {
+        eager: true,
+      }),
+    );
 
     return teamDataLoaded ? (
       teamData.data.map((team: any) => {
+        const image = images.find((x: any) => {
+          const path: string = x[0];
+          return path.includes(team.image);
+        });
+
         return (
           <TeamCard
-            connection={connection}
             key={team.name}
             team={team.name}
             league={team.division}
-            src={teamImages(`./${team.image}`).default}
+            src={(new URL(image[0], import.meta.url)).href}
           />
         );
       })

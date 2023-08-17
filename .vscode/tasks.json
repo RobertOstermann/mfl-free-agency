@@ -2,19 +2,174 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "npm run watch",
+      "label": "watch - client & server",
+      "dependsOn": [
+        "server - dotnet watch (api)",
+        "client - npm start"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    /* Client */
+    {
+      "label": "client - npm start",
       "type": "npm",
-      "script": "watch",
-      "path": "/",
+      "script": "start",
+      "path": "client",
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      }
+    },
+    {
+      "label": "client - start debug",
+      "type": "shell",
+      "command": "sh .vscode/scripts/vite-debug-start.sh",
+      "hide": true,
       "problemMatcher": [],
       "presentation": {
         "echo": true,
-        "reveal": "always",
-        "focus": false,
         "panel": "dedicated",
-        "showReuseMessage": true,
-        "clear": false
+        "reveal": "always",
+        "close": true
       }
-    }
+    },
+    {
+      "label": "client - stop debug",
+      "type": "shell",
+      "command": "sh .vscode/scripts/vite-debug-stop.sh",
+      "hide": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "panel": "dedicated",
+        "reveal": "always",
+        "close": true
+      }
+    },
+    /* Server */
+    {
+      "label": "server - dotnet build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/server/server.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      },
+      // "hide": true
+    },
+    {
+      "label": "server - dotnet publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/server/server.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      },
+      "hide": true
+    },
+    {
+      "label": "server - dotnet watch (swagger)",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/server/server.csproj",
+        "--launch-profile",
+        "swagger"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      },
+      // "hide": true
+    },
+    {
+      "label": "server - dotnet watch (api)",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/server/server.csproj",
+        "/property:GenerateFullPaths=true",
+        "--launch-profile",
+        "api"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      }
+    },
+    {
+      "label": "server - dotnet watch (react)",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/server/server.csproj",
+        "--launch-profile",
+        "react"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "close": false
+      },
+      "hide": true
+    },
+    {
+      "label": "server - dotnet clean",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "clean",
+        "${workspaceFolder}/server",
+        "--configuration",
+        "Release",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "hide": true
+    },
+    {
+      "label": "dotnet publish-release",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/server",
+        "--configuration",
+        "Release",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "dependsOn": "server - dotnet clean",
+      "hide": true
+    },
   ]
 }

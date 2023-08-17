@@ -1,6 +1,6 @@
-import classNames from "classnames";
 import React, { useState } from "react";
 import { Card, Col, Spinner } from "react-bootstrap";
+import classNames from "classnames";
 
 import styles from "./PlayerCard.module.scss";
 

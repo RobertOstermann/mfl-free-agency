@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 
 import styles from "./ChatInput.module.scss";
 
 function ChatInput(props: any) {
-  const { connection, permissions } = props;
+  const { permissions } = props;
+
+  const connection = useBoundStore((state) => state.connection);
+
   const [receiver, setReceiver] = useState("Everyone");
   const [message, setMessage] = useState("");
 
@@ -67,7 +71,7 @@ function ChatInput(props: any) {
           placeholder={permissions ? "Message" : "Select your team to chat"}
           className={styles["chatinput-message-text"]}
           value={message}
-          onChange={permissions ? updateMessage : undefined}
+          onChange={updateMessage}
           onKeyUp={(event: any) => {
             if (event.key === "Enter") {
               onSubmit();

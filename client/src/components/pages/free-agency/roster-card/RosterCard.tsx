@@ -1,13 +1,16 @@
+/* eslint-disable react/display-name */
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import RosterInput from "./roster-input/RosterInput";
 
 import styles from "./RosterCard.module.scss";
 
-function RosterCard(props: any) {
-  const { connection } = props;
+function RosterCard() {
+  const connection = useBoundStore((state) => state.connection);
+
   const [team, setTeam] = useState<any>("MFL Teams");
   const [teams, setTeams] = useState<any>([]);
   const [players, setPlayers] = useState<any>([]);
@@ -20,13 +23,13 @@ function RosterCard(props: any) {
   const selectRoster = useCallback(() => {
     if (team === "MFL Teams") {
       connection
-        .invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.GetOptOuts)
+        ?.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.GetOptOuts)
         .catch((error: any) => {
           return console.error(error.toString());
         });
     } else {
       connection
-        .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetTeamRoster, team)
+        ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetTeamRoster, team)
         .catch((error: any) => {
           return console.error(error.toString());
         });
@@ -163,7 +166,7 @@ function RosterCard(props: any) {
           <Col className={styles["col-label"]}>Cap Available</Col>
           <Col className={styles["col-team-data"]}>${capRoom}</Col>
         </Row>
-        <RosterInput connection={connection} />
+        <RosterInput />
       </Card.Footer>
     </Card>
   );

@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MFL_Manager.Models;
+using server.Models;
 
-namespace MFL_Manager.Hubs.FreeAgency.Clients
+namespace server.Hubs.FreeAgency.Clients
 {
     public interface IPlayersClient
     {

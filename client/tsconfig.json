@@ -1,26 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["node", "vite/client", "vitest/globals"],
+    "rootDir": "src",
     "baseUrl": "src",
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["aspnetcore-*.js"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

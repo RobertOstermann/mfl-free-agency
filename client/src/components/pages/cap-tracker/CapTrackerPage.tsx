@@ -1,6 +1,8 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
+import axios from "axios";
+
+import Api from "api/Api";
 
 function CapTrackerPage() {
   const [res, setRes] = useState<any>([]);
@@ -21,7 +23,7 @@ function CapTrackerPage() {
 
   const getRequest = async () => {
     axios
-      .get("api/v1/mfl/GetRosters")
+      .get(`${Api.route}/mfl/rosters`)
       .then((response) => {
         setRes(response.data.rosters.franchise);
       })
@@ -29,10 +31,10 @@ function CapTrackerPage() {
         console.log(error);
       });
     axios
-      .get("api/v1/mfl/GetAdjustments")
+      .get(`${Api.route}/mfl/adjustments`)
       .then((response) => {
         const data = checkArray(
-          response.data.salaryAdjustments.salaryAdjustment
+          response.data.salaryAdjustments.salaryAdjustment,
         );
         setSalaryAdjustmentsResponse(data);
       })

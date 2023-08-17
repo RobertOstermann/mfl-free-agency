@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, InputGroup } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 
 import styles from "./CommissionerInput.module.scss";
 
-function CommissionerInput(props: any) {
-  const { connection } = props;
+function CommissionerInput() {
+  const connection = useBoundStore((state) => state.connection);
+
   const [commissioner, setCommissioner] = useState(false);
   const [freeAgencyStarted, setFreeAgencyStarted] = useState(false);
   const mountedRef = useRef(true);
@@ -16,7 +18,7 @@ function CommissionerInput(props: any) {
 
     if (connection) {
       connection.invoke(
-        FreeAgencyHub.FreeAgency.Commissioner.Invoke.CheckPermissions
+        FreeAgencyHub.FreeAgency.Commissioner.Invoke.CheckPermissions,
       );
 
       connection.on(
@@ -25,7 +27,7 @@ function CommissionerInput(props: any) {
           if (!mountedRef.current) return null;
           setCommissioner(isCommissioner);
           setFreeAgencyStarted(started);
-        }
+        },
       );
     }
 
@@ -36,7 +38,7 @@ function CommissionerInput(props: any) {
 
   const startFreeAgency = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Invoke.StartFreeAgency)
+      ?.invoke(FreeAgencyHub.FreeAgency.Invoke.StartFreeAgency)
       .catch((error: any) => {
         return console.error(error.toString());
       });
@@ -44,7 +46,7 @@ function CommissionerInput(props: any) {
 
   const resetCurrentPlayer = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.PlayerReset)
+      ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.PlayerReset)
       .catch((error: any) => {
         return console.error(error.toString());
       });
@@ -52,7 +54,7 @@ function CommissionerInput(props: any) {
 
   const sellCurrentPlayer = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.PlayerSold)
+      ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.PlayerSold)
       .catch((error: any) => {
         return console.error(error.toString());
       });
@@ -60,7 +62,7 @@ function CommissionerInput(props: any) {
 
   const setPreviousPlayer = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetPreviousPlayer)
+      ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetPreviousPlayer)
       .catch((error: any) => {
         return console.error(error.toString());
       });
@@ -68,7 +70,7 @@ function CommissionerInput(props: any) {
 
   const setNextPlayer = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetNextPlayer)
+      ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetNextPlayer)
       .catch((error: any) => {
         return console.error(error.toString());
       });

@@ -1,10 +1,6 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
-namespace MFL_Manager.Controllers
+namespace server.Controllers
 {
     [ApiController]
     [Route("api/v1/mfl")]
@@ -23,7 +19,7 @@ namespace MFL_Manager.Controllers
             _logger = logger;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("rosters")]
         public string GetRosters()
         {
             try
@@ -37,7 +33,7 @@ namespace MFL_Manager.Controllers
             }
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("adjustments")]
         public string GetAdjustments()
         {
             try
@@ -51,7 +47,7 @@ namespace MFL_Manager.Controllers
             }
         }
 
-        public async Task<string> Roster()
+        private async Task<string> Roster()
         {
             string url = $"{baseURL}/export?TYPE=rosters&L={leagueId}&JSON=1";
             string response = await client.GetStringAsync(url);
@@ -59,7 +55,7 @@ namespace MFL_Manager.Controllers
             return response;
         }
 
-        public async Task<string> Adjustments()
+        private async Task<string> Adjustments()
         {
             string url = $"{baseURL}/export?TYPE=salaryAdjustments&L={leagueId}&JSON=1";
             string response = await client.GetStringAsync(url);

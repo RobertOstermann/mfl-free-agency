@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MFL_Manager.Models;
+using server.Models;
 
-namespace MFL_Manager.Hubs.FreeAgency.Clients
+namespace server.Hubs.FreeAgency.Clients
 {
     public interface IFreeAgencyClient : IMessageClient, IPlayersClient, ITeamsClient
     {
@@ -12,7 +10,6 @@ namespace MFL_Manager.Hubs.FreeAgency.Clients
         Task OptIn();
         Task OptOut();
         Task SetOptOuts(IEnumerable<string> optOuts, Team team);
-
         Task UpdateOptOut(IEnumerable<string> optOuts);
         Task GrantBidPermissions();
         Task GrantFinalBidPermissions();

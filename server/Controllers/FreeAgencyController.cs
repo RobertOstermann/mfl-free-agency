@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using MFL_Manager.Models;
+using server.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MFL_Manager.Controllers
+namespace server.Controllers
 {
     [ApiController]
     [Route("api/v1/freeagency")]
@@ -10,25 +9,27 @@ namespace MFL_Manager.Controllers
     {
         public static HashSet<Team> GetTeams()
         {
-            HashSet<Team> Teams = new HashSet<Team>();
-            Teams.Add(CreateYellowstone());
-            Teams.Add(CreateTheHomelander());
-            Teams.Add(CreatePigeonBoys());
-            Teams.Add(CreateDactyls());
-            Teams.Add(CreateODBs());
-            Teams.Add(CreateStormDynasty());
-            Teams.Add(CreateBenchwarmers());
-            Teams.Add(CreateGorillas());
-            Teams.Add(CreatePower());
-            Teams.Add(CreateRam());
+            HashSet<Team> Teams = new HashSet<Team>
+            {
+                CreateYellowstone(),
+                CreateTheHomelander(),
+                CreatePigeonBoys(),
+                CreateDactyls(),
+                CreateODBs(),
+                CreateStormDynasty(),
+                CreateBenchwarmers(),
+                CreateGorillas(),
+                CreatePower(),
+                CreateRam()
+            };
             return Teams;
         }
 
         public static LinkedList<Player> GetPlayers()
         {
-            LinkedList<Player> players = new LinkedList<Player>();
+            var players = new LinkedList<Player>();
 
-            Player TravisEtienne = new Player(
+            var TravisEtienne = new Player(
                 "Travis Etienne",
                 "Power",
                 "Jaguars",
@@ -38,7 +39,7 @@ namespace MFL_Manager.Controllers
                 0,
                 23
             );
-            Player MikeEvans = new Player(
+            var MikeEvans = new Player(
                 "Mike Evans",
                 "Benchwarmers",
                 "Buccaneers",
@@ -48,7 +49,7 @@ namespace MFL_Manager.Controllers
                 13.44,
                 29
             );
-            Player LeonardFournette = new Player(
+            var LeonardFournette = new Player(
                 "Leonard Fournette",
                 "Homelander",
                 "Buccaneers",
@@ -58,7 +59,7 @@ namespace MFL_Manager.Controllers
                 15.80,
                 27
             );
-            Player AustinEkler = new Player(
+            var AustinEkler = new Player(
                 "Austin Ekeler",
                 "Gorillas",
                 "Chargers",
@@ -68,7 +69,7 @@ namespace MFL_Manager.Controllers
                 19.23,
                 27
             );
-            Player JMarrChase = new Player(
+            var JMarrChase = new Player(
                 "J'Marr Chase",
                 "jmarr-chase.jpg",
                 "Homelander",
@@ -79,7 +80,7 @@ namespace MFL_Manager.Controllers
                 16.41,
                 22
             );
-            Player MarkAndrews = new Player(
+            var MarkAndrews = new Player(
                 "Mark Andrews",
                 "mark-andrews.jpg",
                 "Power",
@@ -90,7 +91,7 @@ namespace MFL_Manager.Controllers
                 14.70,
                 27
             );
-            Player CeedeeLamb = new Player(
+            var CeedeeLamb = new Player(
                 "Ceedee Lamb",
                 "Storm Dynasty",
                 "Cowboys",
@@ -100,7 +101,7 @@ namespace MFL_Manager.Controllers
                 12.52,
                 23
             );
-            Player MikeWilliams = new Player(
+            var MikeWilliams = new Player(
                 "Mike Williams",
                 "mike-williams.jpg",
                 "Benchwarmers",
@@ -111,7 +112,7 @@ namespace MFL_Manager.Controllers
                 12.41,
                 27
             );
-            Player SaquonBarkley = new Player(
+            var SaquonBarkley = new Player(
                 "Saquon Barkley",
                 "Power",
                 "Giants",
@@ -121,7 +122,7 @@ namespace MFL_Manager.Controllers
                 9.52,
                 25
             );
-            Player JavonteWilliams = new Player(
+            var JavonteWilliams = new Player(
                 "Javonte Williams",
                 "Gorillas",
                 "Broncos",
@@ -131,7 +132,7 @@ namespace MFL_Manager.Controllers
                 11.13,
                 22
             );
-            Player KylePitts = new Player(
+            var KylePitts = new Player(
                 "Kyle Pitts",
                 "Pigeon Boys",
                 "Falcons",
@@ -141,7 +142,7 @@ namespace MFL_Manager.Controllers
                 8.80,
                 21
             );
-            Player JamesConnor = new Player(
+            var JamesConnor = new Player(
                 "James Connor",
                 "Homelander",
                 "Cardinals",
@@ -151,7 +152,7 @@ namespace MFL_Manager.Controllers
                 15.35,
                 27
             );
-            Player PatrickMahomes = new Player(
+            var PatrickMahomes = new Player(
                 "Patrick Mahomes",
                 "Storm Dynasty",
                 "Chiefs",
@@ -161,7 +162,7 @@ namespace MFL_Manager.Controllers
                 32.43,
                 26
             );
-            Player DerrickHenry = new Player(
+            var DerrickHenry = new Player(
                 "Derrick Henry",
                 "Pigeon Boys",
                 "Titans",
@@ -192,7 +193,7 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateYellowstone()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("J.K. Dobbins", 7.00, 2),
                 new Player("Aaron Jones", 15.00, 1),
@@ -204,17 +205,14 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateTheHomelander()
         {
-            List<Player> players = new List<Player>()
-            {
-                new Player("Dalvin Cook", 26.50, 1),
-            };
+            var players = new List<Player>() { new Player("Dalvin Cook", 26.50, 1), };
 
             return new Team("The Homelander", 12.11, players);
         }
 
         private static Team CreatePigeonBoys()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Justin Herbert", 11.50, 3),
                 new Player("D'Andre Swift", 12.00, 2),
@@ -225,7 +223,7 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateDactyls()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Alvin Kamara", 12.60, 3),
                 new Player("Christian McCaffrey", 32.00, 2),
@@ -237,7 +235,7 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateODBs()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Josh Allen", 24.00, 3),
                 new Player("Chris Godwin", 18.50, 1),
@@ -249,7 +247,7 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateStormDynasty()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Jonathan Taylor", 7.50, 2),
                 new Player("Travis Kelce", 19.00, 1),
@@ -260,24 +258,21 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateBenchwarmers()
         {
-            List<Player> players = new List<Player>();
+            var players = new List<Player>();
 
             return new Team("Benchwarmers", 12.08, players);
         }
 
         private static Team CreateGorillas()
         {
-            List<Player> players = new List<Player>
-            {
-                new Player("DK Metcalf", 7.23, 1),
-            };
+            var players = new List<Player> { new Player("DK Metcalf", 7.23, 1), };
 
             return new Team("Gorillas", 0, players);
         }
 
         private static Team CreatePower()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Lamar Jackson", 28.00, 1),
                 new Player("Antonio Gibson", 21.00, 3),
@@ -289,7 +284,7 @@ namespace MFL_Manager.Controllers
 
         private static Team CreateRam()
         {
-            List<Player> players = new List<Player>
+            var players = new List<Player>
             {
                 new Player("Najee Harris", 8.21, 3),
                 new Player("A.J. Brown", 9.79, 2),

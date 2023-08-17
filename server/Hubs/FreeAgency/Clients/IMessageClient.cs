@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
-
-namespace MFL_Manager.Hubs.FreeAgency.Clients
+namespace server.Hubs.FreeAgency.Clients
 {
     public interface IMessageClient
     {

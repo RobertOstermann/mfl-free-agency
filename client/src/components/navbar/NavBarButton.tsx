@@ -1,17 +1,23 @@
 import React from "react";
-import { Button, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Button, Nav, NavLinkProps } from "react-bootstrap";
+import { Link, LinkPropsOptions } from "@tanstack/react-router";
 
 import styles from "./NavBarButton.module.scss";
 
-function NavBarButton(props: any) {
+type NavBarButtonProps = {
+  eventKey: any,
+  text: string,
+} & NavLinkProps & LinkPropsOptions;
+
+function NavBarButton(props: NavBarButtonProps) {
   return (
     <Nav.Link
-      as={NavLink}
-      eventKey={props.eventKey}
+      as={Link}
       to={props.to}
-      exact={props.exact}
-      activeClassName={styles["nav-link-active"]}
+      activeProps={{
+        className: styles["nav-link-active"],
+      }}
+      {...props}
     >
       <Button variant="primary" className={styles["navbar-btn"]}>
         {props.text}

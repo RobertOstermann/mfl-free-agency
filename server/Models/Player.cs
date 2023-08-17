@@ -1,36 +1,34 @@
-using System;
-
-namespace MFL_Manager.Models
+namespace server.Models
 {
     public class Player
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public string Src { get; set; }
+        public string Src { get; set; } = null!;
 
-        public string MflTeam { get; set; }
+        public string MflTeam { get; set; } = null!;
 
-        public string OriginalRights { get; set; }
+        public string OriginalRights { get; set; } = null!;
 
-        public string NflTeam { get; set; }
+        public string NflTeam { get; set; } = null!;
 
-        public string Position { get; set; }
+        public string Position { get; set; } = null!;
 
-        public int Age { get; set; }
+        public int Age { get; set; } = 0;
 
-        public double Salary { get; set; }
+        public double Salary { get; set; } = 7.00;
 
-        public double OriginalSalary { get; set; }
+        public double OriginalSalary { get; set; } = 7.00;
 
-        public int ContractYears { get; set; }
+        public int ContractYears { get; set; } = 0;
 
         public int ContractDate => ContractYears + DateTime.Now.Year - 1;
 
-        public int PreviousRank { get; set; }
+        public int PreviousRank { get; set; } = 0;
 
-        public double PreviousAverage { get; set; }
+        public double PreviousAverage { get; set; } = 0;
 
-        public bool Signed { get; set; }
+        public bool Signed { get; set; } = false;
 
         /// <summary>
         /// Rostered player.
@@ -46,7 +44,6 @@ namespace MFL_Manager.Models
             ContractYears = years;
         }
 
-
         /// <summary>
         /// Free Agent player.
         /// </summary>
@@ -60,7 +57,18 @@ namespace MFL_Manager.Models
         /// <param name="age">Player age</param>
         /// <param name="years">Contract years</param>
         /// <param name="signed">Status of signed to team</param>
-        public Player(string player, string mflTeam, string nflTeam, string position, double salary, int previousRank, double previousAverage, int age, int years = 0, bool signed = false)
+        public Player(
+            string player,
+            string mflTeam,
+            string nflTeam,
+            string position,
+            double salary,
+            int previousRank,
+            double previousAverage,
+            int age,
+            int years = 0,
+            bool signed = false
+        )
         {
             Name = player;
             Src = player.ToLower().Replace(" ", "-").Replace("'", "") + ".gif";
@@ -91,7 +99,19 @@ namespace MFL_Manager.Models
         /// <param name="age">Player age</param>
         /// <param name="years">Contract years</param>
         /// <param name="signed">Status of signed to team</param>
-        public Player(string player, string src, string mflTeam, string nflTeam, string position, double salary, int previousRank, double previousAverage, int age, int years = 0, bool signed = false)
+        public Player(
+            string player,
+            string src,
+            string mflTeam,
+            string nflTeam,
+            string position,
+            double salary,
+            int previousRank,
+            double previousAverage,
+            int age,
+            int years = 0,
+            bool signed = false
+        )
         {
             Name = player;
             Src = src;

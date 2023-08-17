@@ -8,11 +8,15 @@ import {
 } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 
 import styles from "./MatchInput.module.scss";
 
 function MatchInput(props: any) {
-  const { connection, leadBid, contractYears } = props;
+  const { leadBid, contractYears } = props;
+
+  const connection = useBoundStore((state) => state.connection);
+
   const [matchYears, setMatchYears] = useState<number>(0);
   const inputRef = useRef<any>(null);
   const yearsRef = useRef<any>(null);
@@ -23,7 +27,7 @@ function MatchInput(props: any) {
 
   const optOut = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.MatchBid, false, 0)
+      ?.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.MatchBid, false, 0)
       .catch((error: any) => {
         return console.error(error.toString());
       });
@@ -31,7 +35,7 @@ function MatchInput(props: any) {
 
   const matchBid = () => {
     connection
-      .invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.MatchBid, true, matchYears)
+      ?.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.MatchBid, true, matchYears)
       .catch((error: any) => {
         return console.error(error.toString());
       });

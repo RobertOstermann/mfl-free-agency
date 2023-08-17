@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import PlayerCard from "./player-card/PlayerCard";
 
 import styles from "./PlayerPage.module.scss";
 
-function PlayerPage(props: any) {
-  const { connection } = props;
+function PlayerPage() {
+  const connection = useBoundStore((state) => state.connection);
 
   const [playerData, setPlayerData] = useState<any>(null);
   const [playerDataLoaded, setPlayerDataLoaded] = useState<any>(false);
@@ -38,15 +39,24 @@ function PlayerPage(props: any) {
   }, [connection]);
 
   const createPlayerCards = () => {
-    const playerImages = require.context("data/images/players", true);
+    const playerImages: any = Object.entries(
+      import.meta.glob("../../../data/images/players/*", {
+        eager: true,
+      }),
+    );
 
     return playerDataLoaded ? (
       playerData.map((player: any, index: any) => {
+        const image = playerImages.find((x: any) => {
+          const path: string = x[0];
+          return path.includes(player.src);
+        });
+
         return (
           <PlayerCard
             key={index}
             player={player.name}
-            src={playerImages(`./${player.src}`).default}
+            src={(new URL(image[0], import.meta.url)).href}
             teamNFL={player.nflTeam}
             teamMFL={player.mflTeam}
             salary={player.salary}

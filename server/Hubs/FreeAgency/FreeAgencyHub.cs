@@ -1,25 +1,21 @@
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MFL_Manager.Controllers;
-using MFL_Manager.Hubs.FreeAgency.Clients;
-using MFL_Manager.Models;
+using server.Controllers;
+using server.Hubs.FreeAgency.Clients;
+using server.Models;
 using Microsoft.AspNetCore.Http.Connections.Features;
 using Microsoft.AspNetCore.SignalR;
 
-namespace MFL_Manager.Hubs.FreeAgency
+namespace server.Hubs.FreeAgency
 {
     public class FreeAgencyHub : Hub<IFreeAgencyClient>
     {
         private static bool _isServerInitialized;
-        private static readonly ConcurrentDictionary<string, Team> Connections = new ConcurrentDictionary<string, Team>();
-        private static readonly HashSet<string> OptOutIds = new HashSet<string>();
-        private static HashSet<Team> Teams;
-        private static LinkedList<Player> Players;
-        private static LinkedListNode<Player> _node;
-        private static readonly Queue<Message> Messages = new Queue<Message>();
+        private static readonly ConcurrentDictionary<string, Team> Connections = new();
+        private static readonly HashSet<string> OptOutIds = new();
+        private static HashSet<Team> Teams = null!;
+        private static LinkedList<Player> Players = null!;
+        private static LinkedListNode<Player> _node = null!;
+        private static readonly Queue<Message> Messages = new();
         private static bool _freeAgencyInProgress;
         private static bool _bidInProgress;
         private static bool _matchInProgress;
@@ -34,16 +30,19 @@ namespace MFL_Manager.Hubs.FreeAgency
                 _isServerInitialized = true;
                 Teams = FreeAgencyController.GetTeams();
                 Players = FreeAgencyController.GetPlayers();
-                _node = Players.First;
+                _node = Players.First!;
             }
         }
 
         public async void GetCookie()
         {
-            string teamName = Context.Features.Get<IHttpContextFeature>().HttpContext.Request.Cookies["TeamCookie"];
+            string? teamName = Context.Features.Get<IHttpContextFeature>()?.HttpContext?.Request.Cookies["TeamCookie"];
             if (!string.IsNullOrWhiteSpace(teamName))
             {
-                if (Connections.TryAdd(Context.ConnectionId, Teams.FirstOrDefault(t => t.Name.Equals(teamName))))
+                if (Connections.TryAdd(
+                    Context.ConnectionId,
+                    Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
+                ))
                 {
                     await Clients.Others.UpdateTeams();
                 }
@@ -54,7 +53,7 @@ namespace MFL_Manager.Hubs.FreeAgency
             }
         }
 
-        public override Task OnDisconnectedAsync(Exception exception)
+        public override Task OnDisconnectedAsync(Exception? exception)
         {
             if (Context.ConnectionId != null)
             {
@@ -75,7 +74,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                 {
                     await Clients.Caller.ServerSelectTeam(team.Name);
                 }
-                else
+                else if (team != null)
                 {
                     await Clients.Caller.ReceiveSetTeam(team.Name);
                 }
@@ -86,7 +85,10 @@ namespace MFL_Manager.Hubs.FreeAgency
         {
             if (GetUserTeam() == null)
             {
-                if (Connections.TryAdd(Context.ConnectionId, Teams.FirstOrDefault(t => t.Name.Equals(teamName))))
+                if (Connections.TryAdd(
+                    Context.ConnectionId,
+                    Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
+                ))
                 {
                     foreach (var connection in Connections)
                     {
@@ -103,8 +105,7 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task RemoveTeam(string teamName)
         {
-            Team team = null;
-            if (Connections.TryRemove(Context.ConnectionId, out team))
+            if (Connections.TryRemove(Context.ConnectionId, out Team? team))
             {
                 await Clients.Caller.RemoveCookie();
 
@@ -139,7 +140,7 @@ namespace MFL_Manager.Hubs.FreeAgency
             _freeAgencyInProgress = true;
             _bidInProgress = true;
             await CheckCommissionerPermissions();
-            Player player = _node?.Value;
+            var player = _node?.Value;
             if (player != null)
             {
                 _leadBid = player.Salary;
@@ -156,7 +157,7 @@ namespace MFL_Manager.Hubs.FreeAgency
             {
                 await Clients.Caller.LoginStatus(true);
                 await Clients.Caller.GrantMessagePermissions();
-                Player player = _node?.Value;
+                var player = _node?.Value;
                 if (_bidInProgress)
                 {
                     if (player != null && player.Signed)
@@ -225,7 +226,7 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task GetPreviousPlayer()
         {
-            Player player = _node?.Previous?.Value;
+            var player = _node?.Previous?.Value;
             if (player != null)
             {
                 OptOutIds.Clear();
@@ -234,7 +235,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                 _bidInProgress = !player.Signed;
                 _matchInProgress = false;
                 _contractYears = player.ContractYears;
-                _node = _node.Previous;
+                _node = _node?.Previous!;
                 _leadBid = player.Salary;
                 _leadBidder = player.MflTeam;
                 await Clients.All.SetPlayer(player);
@@ -245,7 +246,7 @@ namespace MFL_Manager.Hubs.FreeAgency
         {
             if (_freeAgencyInProgress)
             {
-                Player player = _node?.Value;
+                var player = _node?.Value;
                 if (player != null)
                 {
                     _bidInProgress = !player.Signed;
@@ -256,7 +257,7 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task GetNextPlayer()
         {
-            Player player = _node?.Next?.Value;
+            var player = _node?.Next?.Value;
             if (player != null)
             {
                 OptOutIds.Clear();
@@ -265,7 +266,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                 _bidInProgress = !player.Signed;
                 _matchInProgress = false;
                 _contractYears = player.ContractYears;
-                _node = _node.Next;
+                _node = _node?.Next!;
                 _leadBid = player.Salary;
                 _leadBidder = player.MflTeam;
                 await Clients.All.SetPlayer(player);
@@ -277,7 +278,7 @@ namespace MFL_Manager.Hubs.FreeAgency
             OptOutIds.Clear();
             await Clients.All.OptIn();
             await Clients.All.UpdateOptOut(OptOutIds.ToArray());
-            Player player = _node?.Value;
+            var player = _node?.Value;
             if (player != null)
             {
                 _bidInProgress = true;
@@ -298,7 +299,7 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task PlayerSold()
         {
-            Player player = _node?.Value;
+            var player = _node?.Value;
             if (player != null)
             {
                 if (!player.Signed)
@@ -429,7 +430,7 @@ namespace MFL_Manager.Hubs.FreeAgency
         {
             if (_contractYears == 0)
             {
-                Player player = _node?.Value;
+                var player = _node?.Value;
                 if (player != null && player.Signed)
                 {
                     await Clients.Caller.ReceiveBid(_leadBidder, _leadBid, true);
@@ -447,10 +448,10 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task SendBid(double bid)
         {
-            Team team = GetUserTeam();
+            var team = GetUserTeam();
             if (team != null)
             {
-                Player player = _node?.Value;
+                var player = _node?.Value;
                 if (player != null)
                 {
                     if (bid > _leadBid || (player.OriginalRights.Equals(_leadBidder) && bid >= _leadBid))
@@ -465,7 +466,7 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         public async Task SendFinalBid(double bid, int years)
         {
-            Team team = GetUserTeam();
+            var team = GetUserTeam();
             if (team != null)
             {
                 if (bid >= _leadBid)
@@ -473,7 +474,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                     _leadBid = bid;
                     _leadBidder = team.Name;
                     _contractYears = years;
-                    Player player = _node?.Value;
+                    var player = _node?.Value;
                     if (player != null)
                     {
                         _bidInProgress = false;
@@ -484,7 +485,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                         player.Signed = true;
                         AddPlayerToTeam(player);
                         string information = $"{_leadBidder} places a final bid of ${_leadBid:F} for {_contractYears} years. " +
-                                             $"{player.OriginalRights} now has the option to match.";
+                            $"{player.OriginalRights} now has the option to match.";
                         string footer = $"Player Update: {player.Name}";
                         Messages.Enqueue(new Message("Server-Everyone", information, footer));
                         await Clients.All.ReceiveMessageInformation(information, footer);
@@ -501,7 +502,7 @@ namespace MFL_Manager.Hubs.FreeAgency
             Team team = GetUserTeam();
             if (team != null)
             {
-                Player player = _node?.Value;
+                var player = _node?.Value;
                 if (player != null)
                 {
                     _matchInProgress = false;
@@ -517,7 +518,7 @@ namespace MFL_Manager.Hubs.FreeAgency
                         if (player.Signed)
                         {
                             information = $"{player.OriginalRights} does not match. {_leadBidder} secures the free agent. " +
-                                          $"The final deal is {_leadBid:F} for {_contractYears} years.";
+                                $"The final deal is {_leadBid:F} for {_contractYears} years.";
                         }
                         else
                         {
@@ -536,8 +537,11 @@ namespace MFL_Manager.Hubs.FreeAgency
                     await Clients.All.ReceiveMessageInformation(information, footer);
                 }
 
-                await Clients.All.SetPlayer(player);
-                await Clients.All.UpdatePlayers(player);
+                if (player != null)
+                {
+                    await Clients.All.SetPlayer(player);
+                    await Clients.All.UpdatePlayers(player);
+                }
                 await Clients.All.UpdateTeamRoster();
             }
         }
@@ -557,9 +561,9 @@ namespace MFL_Manager.Hubs.FreeAgency
             await Clients.Caller.SetTeamRoster(GetSelectedTeamRoster(team));
         }
 
-        private Team GetSelectedTeamRoster(string selectedTeam)
+        private static Team GetSelectedTeamRoster(string selectedTeam)
         {
-            return Teams.FirstOrDefault(team => team.Name.Equals(selectedTeam));
+            return Teams.FirstOrDefault(team => team.Name.Equals(selectedTeam))!;
         }
 
         #endregion
@@ -568,10 +572,9 @@ namespace MFL_Manager.Hubs.FreeAgency
 
         private Team GetUserTeam()
         {
-            Team team = null;
-            Connections.TryGetValue(Context.ConnectionId, out team);
+            Connections.TryGetValue(Context.ConnectionId, out Team? team);
 
-            return team;
+            return team!;
         }
 
         private void AddPlayerToTeam(Player player)

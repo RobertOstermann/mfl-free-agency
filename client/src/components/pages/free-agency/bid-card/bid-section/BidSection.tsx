@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
 import React, { useEffect, useRef, useState } from "react";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import BidInformation from "./bid-information/BidInformation";
 import BidInput from "./bid-input/BidInput";
 import BidInputOptIn from "./bid-input/BidInputOptIn";
@@ -13,9 +15,10 @@ import MatchInputWait from "./match-input/MatchInputWait";
 
 // import styles from "./BidSection.module.scss";
 
-function BidSection(props: any) {
-  const { connection } = props;
-  const [state, setState] = useState(BidSectionState.Guest);
+function BidSection() {
+  const connection = useBoundStore((state) => state.connection);
+
+  const [state, setState] = useState<string>(BidSectionState.Guest);
   const [leadBid, setLeadBid] = useState("7.00");
   const [leadTeam, setLeadTeam] = useState(null);
   const [currentBid, setCurrentBid] = useState("7.00");
@@ -50,7 +53,7 @@ function BidSection(props: any) {
           setState(BidSectionState.User.FinalBid);
           setCurrentBid(leadBid);
           connection.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.GetBid);
-        }
+        },
       );
 
       connection.on(FreeAgencyHub.FreeAgency.Bid.RevokeBidPermissions, () => {
@@ -85,7 +88,7 @@ function BidSection(props: any) {
             const updatedBid = (updatedBidNumber + 0.5).toFixed(2);
             setCurrentBid(updatedBid);
           }
-        }
+        },
       );
 
       connection.on(
@@ -95,7 +98,7 @@ function BidSection(props: any) {
           setLeadBid(bid.toFixed(2));
           setLeadTeam(team);
           setContractYears(years);
-        }
+        },
       );
 
       connection.on(FreeAgencyHub.FreeAgency.Bid.OptIn, () => {
@@ -131,9 +134,9 @@ function BidSection(props: any) {
   const submitBid = () => {
     if (parseFloat(currentBid) > parseFloat(leadBid)) {
       connection
-        .invoke(
+        ?.invoke(
           FreeAgencyHub.FreeAgency.Bid.Invoke.SendBid,
-          parseFloat(currentBid)
+          parseFloat(currentBid),
         )
         .catch((error: any) => {
           console.log(error);
@@ -148,10 +151,10 @@ function BidSection(props: any) {
   const submitFinalBid = () => {
     if ([2, 3, 4].includes(parseInt(contractYears))) {
       connection
-        .invoke(
+        ?.invoke(
           FreeAgencyHub.FreeAgency.Bid.Invoke.SendFinalBid,
           parseFloat(currentBid),
-          parseInt(contractYears)
+          parseInt(contractYears),
         )
         .catch((error: any) => {
           console.log(error);
@@ -170,7 +173,7 @@ function BidSection(props: any) {
   if (state === BidSectionState.User.Bid) {
     Output = () => (
       <BidInput
-        connection={connection}
+
         leadBid={leadBid}
         currentBid={currentBid}
         updateCurrentBid={updateCurrentBid}
@@ -197,7 +200,7 @@ function BidSection(props: any) {
   }
 
   if (state === BidSectionState.User.OptOut) {
-    Output = () => <BidInputOptIn connection={connection} leadBid={leadBid} />;
+    Output = () => <BidInputOptIn leadBid={leadBid} />;
   }
 
   if (state === BidSectionState.User.MatchWait) {
@@ -209,7 +212,7 @@ function BidSection(props: any) {
   if (state === BidSectionState.User.Match) {
     Output = () => (
       <MatchInput
-        connection={connection}
+
         leadBid={leadBid}
         contractYears={contractYears}
       />
@@ -224,7 +227,7 @@ function BidSection(props: any) {
         contractYears={contractYears}
       />
       <Output />
-      <CommissionerInput connection={connection} />
+      <CommissionerInput />
     </React.Fragment>
   );
 }

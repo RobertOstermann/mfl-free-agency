@@ -2,7 +2,10 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 
 import NavBarButton from "components/navbar/NavBarButton";
-import routes from "components/RoutesHelper";
+import { capTrackerRoute } from "components/router/pages/cap-tracker";
+import { freeAgencyRoute } from "components/router/pages/free-agency";
+import { homeRoute } from "components/router/pages/home";
+import { playersRoute } from "components/router/pages/players";
 
 import styles from "./NavBar.module.scss";
 
@@ -35,26 +38,31 @@ function NavBar() {
           <Nav className="ml-auto">
             <NavBarButton
               eventKey={"1"}
-              to={routes.owner.home}
-              exact={true}
+              to={homeRoute.to}
               text={"Home"}
             />
             <NavBarButton
               eventKey={"2"}
-              to={routes.owner.captracker}
-              exact={false}
+              to={capTrackerRoute.to}
+              activeOptions={{
+                exact: false,
+              }}
               text={"Cap"}
             />
             <NavBarButton
               eventKey={"3"}
-              to={routes.owner.players}
-              exact={false}
+              to={playersRoute.to}
+              activeOptions={{
+                exact: false,
+              }}
               text={"Players"}
             />
             <NavBarButton
               eventKey={"4"}
-              to={routes.owner.freeagency}
-              exact={false}
+              to={freeAgencyRoute.to}
+              activeOptions={{
+                exact: false,
+              }}
               text={"Free Agency"}
             />
           </Nav>

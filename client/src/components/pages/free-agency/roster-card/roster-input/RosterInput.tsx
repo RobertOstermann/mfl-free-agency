@@ -2,24 +2,25 @@ import React from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 
 import styles from "./RosterInput.module.scss";
 
-function RosterInput(props: any) {
-  const { connection } = props;
+function RosterInput() {
+  const connection = useBoundStore((state) => state.connection);
 
   const selectRoster = (event: any) => {
     const index = event.target.value;
     const team = event.target[index].text;
     if (index === "0") {
       connection
-        .invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.GetOptOuts)
+        ?.invoke(FreeAgencyHub.FreeAgency.Bid.Invoke.GetOptOuts)
         .catch((error: any) => {
           return console.error(error.toString());
         });
     } else {
       connection
-        .invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetTeamRoster, team)
+        ?.invoke(FreeAgencyHub.FreeAgency.Player.Invoke.GetTeamRoster, team)
         .catch((error: any) => {
           return console.error(error.toString());
         });

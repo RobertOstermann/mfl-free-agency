@@ -1,4 +1,4 @@
-namespace MFL_Manager.Models
+namespace server.Models
 {
     public class Message
     {

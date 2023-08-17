@@ -1,23 +1,25 @@
-import MFLManager from "MFLManager";
-import React from "react";
 import { CookiesProvider } from "react-cookie";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "@tanstack/react-router";
 
-import reportWebVitals from "./reportWebVitals";
+import { router } from "components/router/Router";
 
 import "index.scss";
 
-ReactDOM.render(
-  <CookiesProvider>
-    <BrowserRouter>
-      <MFLManager />
-    </BrowserRouter>
-  </CookiesProvider>,
-  document.getElementById("root")
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement,
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// This clears the console on hot reloads during development
+// if (import.meta.hot) {
+//   import.meta.hot.on(
+//     "vite:beforeUpdate",
+//     () => console.clear(),
+//   );
+// }
+
+root.render(
+  <CookiesProvider>
+    <RouterProvider router={router} />
+  </CookiesProvider>,
+);

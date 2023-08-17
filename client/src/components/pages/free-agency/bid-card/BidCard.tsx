@@ -1,14 +1,16 @@
-import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Spinner } from "react-bootstrap";
+import classNames from "classnames";
 
 import { FreeAgencyHub } from "components/Hub";
+import { useBoundStore } from "store/Store";
 import BidSection from "./bid-section/BidSection";
 
 import styles from "./BidCard.module.scss";
 
-function BidCard(props: any) {
-  const { connection } = props;
+function BidCard() {
+  const connection = useBoundStore((state) => state.connection);
+
   const [imageSrc, setImageSrc] = useState("football-field.gif");
   const [imageAlt, setImageAlt] = useState("Football Field");
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -16,7 +18,11 @@ function BidCard(props: any) {
   const [subtitle, setSubtitle] = useState("Starting Soon");
   const mountedRef = useRef(true);
 
-  const playerImages = require.context("data/images/players", true);
+  const playerImages: any = Object.entries(
+    import.meta.glob("../../../../data/images/players/*", {
+      eager: true,
+    }),
+  );
 
   useEffect(() => {
     mountedRef.current = true;
@@ -40,10 +46,18 @@ function BidCard(props: any) {
   const getSource = (): string | undefined => {
     let src = undefined;
     try {
-      src = playerImages(`./${imageSrc}`).default;
+      const image = playerImages.find((x: any) => {
+        const path: string = x[0];
+        return path.includes(imageSrc);
+      });
+      src = (new URL(image[0], import.meta.url)).href;
     } catch (error) {
       try {
-        src = playerImages("./football-field.jpg").default;
+        const image = playerImages.find((x: any) => {
+          const path: string = x[0];
+          return path.includes("football-field.jpg");
+        });
+        src = (new URL(image[0], import.meta.url)).href;
       } catch (error) {
         src = undefined;
       }
@@ -77,7 +91,7 @@ function BidCard(props: any) {
         </Card.Subtitle>
       </Card.Body>
       <Card.Footer className={styles["bidcard-footer"]}>
-        <BidSection connection={connection} />
+        <BidSection />
       </Card.Footer>
     </Card>
   );

@@ -1,23 +1,29 @@
-import { HubConnectionBuilder, HubConnectionState } from "@microsoft/signalr";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { HubConnectionBuilder, HubConnectionState, LogLevel } from "@microsoft/signalr";
+import { Outlet } from "@tanstack/react-router";
 
 import { FreeAgencyHub } from "components/Hub";
+import Api from "./api/Api";
 import Footer from "./components/footer/Footer";
 import NavBar from "./components/navbar/NavBar";
-import Routes from "./components/Routes";
+import { useBoundStore } from "./store/Store";
 
 import "MFLManager.scss";
 
 function MFLManager() {
-  const [connection, setConnection] = useState<signalR.HubConnection>();
-  const [connected, setConnected] = useState(false);
   const [, setCookie, removeCookie] = useCookies(["TeamCookie"]);
+
+  const connection = useBoundStore((state) => state.connection);
+  const setConnection = useBoundStore((state) => state.setConnection);
+
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl(`${window.location.origin}/hubs/freeagency`)
+      .withUrl(`${Api.route}/hubs/freeagency`)
       .withAutomaticReconnect()
+      .configureLogging(LogLevel.Warning)
       .build();
 
     setConnection(newConnection);
@@ -49,7 +55,7 @@ function MFLManager() {
       <div className="content">
         <NavBar />
         <div className="MFL-Manager">
-          {connected && <Routes connection={connection} />}
+          {connected && <Outlet />}
         </div>
       </div>
       <Footer />

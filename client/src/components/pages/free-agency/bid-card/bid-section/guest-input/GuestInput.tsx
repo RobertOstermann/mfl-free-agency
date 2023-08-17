@@ -1,15 +1,17 @@
 import React from "react";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
+
+import { homeRoute } from "components/router/pages/home";
 
 import styles from "./GuestInput.module.scss";
 
 function GuestInput(props: any) {
   const { leadBid } = props;
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const selectTeam = () => {
-    history.push("/");
+    navigate({ to: homeRoute.to });
   };
 
   return (

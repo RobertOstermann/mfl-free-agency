@@ -1,21 +1,26 @@
-import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { Card, Col, Spinner } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
+import classNames from "classnames";
 
 import { FreeAgencyHub } from "components/Hub";
+import { freeAgencyRoute } from "components/router/pages/free-agency";
+import { useBoundStore } from "store/Store";
 
 import styles from "./TeamCard.module.scss";
 
 function TeamCard(props: any) {
-  const { connection, team, src, league } = props;
+  const { team, src, league } = props;
+
+  const connection = useBoundStore((state) => state.connection);
+
   const [className, setClassName] = useState<any>("teamcard");
   const [selectedTeam, setSelectedTeam] = useState<any>(false);
   const [currentTeam, setCurrentTeam] = useState<any>(false);
   const [takenTeam, setTakenTeam] = useState<any>(false);
   const [imageLoaded, setImageLoaded] = useState<any>(false);
   const mountedRef = useRef<any>(true);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     mountedRef.current = true;
@@ -35,7 +40,8 @@ function TeamCard(props: any) {
         if (serverTeam === team) {
           setCurrentTeam(true);
         }
-        history.push("/free-agency");
+
+        navigate({ to: freeAgencyRoute.to });
       });
 
       connection.on(FreeAgencyHub.ReceiveSetTeam, (serverTeam: any) => {
@@ -58,7 +64,17 @@ function TeamCard(props: any) {
     return () => {
       mountedRef.current = false;
     };
-  }, [connection, history, team]);
+  }, [connection, location.pathname, team]);
+
+  useEffect(() => {
+    if (connection) {
+      connection.invoke(FreeAgencyHub.Invoke.GetTeams);
+
+      connection.on(FreeAgencyHub.UpdateTeams, () => {
+        connection.invoke(FreeAgencyHub.Invoke.GetTeams);
+      });
+    }
+  }, [connection, location.pathname]);
 
   useEffect(() => {
     setClassName(
@@ -66,15 +82,15 @@ function TeamCard(props: any) {
         [styles["teamcard"]]: true,
         [styles["active"]]: currentTeam,
         [styles["taken"]]: takenTeam,
-      })
+      }),
     );
-  }, [setClassName, currentTeam, takenTeam]);
+  }, [setClassName, location.pathname, currentTeam, selectedTeam, takenTeam]);
 
   const selectTeam = (team: any) => {
     if (!currentTeam) {
       if (!selectedTeam) {
         connection
-          .invoke(FreeAgencyHub.Invoke.SetTeam, team)
+          ?.invoke(FreeAgencyHub.Invoke.SetTeam, team)
           .then(() => {
             if (!mountedRef.current) return null;
             setCurrentTeam(true);
@@ -85,7 +101,7 @@ function TeamCard(props: any) {
       }
     } else {
       connection
-        .invoke(FreeAgencyHub.Invoke.RemoveTeam, team)
+        ?.invoke(FreeAgencyHub.Invoke.RemoveTeam, team)
         .then(() => {
           setCurrentTeam(false);
         })
