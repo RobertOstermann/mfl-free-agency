@@ -14,7 +14,8 @@
 
     // Azure
     "appService.preDeployTask": "dotnet publish-release",
-    "appService.deploySubpath": "server/bin/Release/net7.0/publish",
+    "appService.deploySubpath": "server\\bin\\Release\\net7.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/964cf311-5944-40d7-b3c8-961f15a52243/resourceGroups/Azure-Resources/providers/Microsoft.Web/sites/mfl-freeagency",
     // C#
     "dotnet.defaultSolution": "server/server.sln",
     // ESLint
@@ -67,5 +68,5 @@
     "scss.completion.completePropertyWithSemicolon": true,
     "[scss]": {
       "editor.tabSize": 2
-    },
+    }
 }
