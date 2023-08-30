@@ -31,7 +31,7 @@ namespace server.Controllers
 
             var AmonRaStBrown = new Player(
                 "Amon-Ra St. Brown",
-                "amon-ra-st-brown.avif",
+                "amon-ra-st-brown.jpg",
                 Teams.Homelander,
                 "Lions",
                 "WR",
