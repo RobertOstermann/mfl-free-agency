@@ -10,7 +10,7 @@ namespace server.Controllers
 
         private const string leagueId = "30916";
 
-        private HttpClient client = new HttpClient();
+        private readonly HttpClient client = new();
 
         private readonly ILogger<MFLController> _logger;
 

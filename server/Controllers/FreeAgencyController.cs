@@ -9,7 +9,7 @@ namespace server.Controllers
     {
         public static HashSet<Team> GetTeams()
         {
-            HashSet<Team> Teams = new HashSet<Team>
+            var Teams = new HashSet<Team>
             {
                 CreateYellowstone(),
                 CreateTheHomelander(),
@@ -29,164 +29,115 @@ namespace server.Controllers
         {
             var players = new LinkedList<Player>();
 
-            var TravisEtienne = new Player(
-                "Travis Etienne",
-                "Power",
-                "Jaguars",
-                "RB",
+            var AmonRaStBrown = new Player(
+                "Amon-Ra St. Brown",
+                "amon-ra-st-brown.avif",
+                Teams.Homelander,
+                "Lions",
+                "WR",
                 7.00,
                 0,
                 0,
                 23
             );
-            var MikeEvans = new Player(
-                "Mike Evans",
-                "Benchwarmers",
-                "Buccaneers",
-                "WR",
-                8.22,
-                10,
-                13.44,
-                29
-            );
-            var LeonardFournette = new Player(
-                "Leonard Fournette",
-                "Homelander",
-                "Buccaneers",
+            var BreeceHall = new Player(
+                "Breece Hall",
+                "breece-hall.webp",
+                Teams.Power,
+                "Jets",
                 "RB",
-                7.00,
-                6,
-                15.80,
-                27
-            );
-            var AustinEkler = new Player(
-                "Austin Ekeler",
-                "Gorillas",
-                "Chargers",
-                "RB",
-                17.50,
-                2,
-                19.23,
-                27
-            );
-            var JMarrChase = new Player(
-                "J'Marr Chase",
-                "jmarr-chase.jpg",
-                "Homelander",
-                "Bengals",
-                "WR",
-                7.00,
-                4,
-                16.41,
+                7.25,
+                0,
+                0,
                 22
             );
-            var MarkAndrews = new Player(
-                "Mark Andrews",
-                "mark-andrews.jpg",
-                "Power",
-                "Ravens",
-                "TE",
-                7.00,
-                1,
-                14.70,
-                27
-            );
-            var CeedeeLamb = new Player(
-                "Ceedee Lamb",
-                "Storm Dynasty",
-                "Cowboys",
+            var GarrettWilson = new Player(
+                "Garrett Wilson",
+                "garrett-wilson.webp",
+                Teams.Gorillas,
+                "Jets",
                 "WR",
-                8.48,
-                15,
-                12.52,
+                7.00,
+                0,
+                0,
                 23
             );
-            var MikeWilliams = new Player(
-                "Mike Williams",
-                "mike-williams.jpg",
-                "Benchwarmers",
-                "Chargers",
-                "WR",
-                7.00,
-                16,
-                12.41,
-                27
-            );
-            var SaquonBarkley = new Player(
-                "Saquon Barkley",
-                "Power",
-                "Giants",
+            var JoshJacobs = new Player(
+                "Josh Jacobs",
+                "josh-jacobs.png",
+                Teams.Homelander,
+                "Raiders",
                 "RB",
-                11.02,
-                32,
-                9.52,
+                7.00,
+                0,
+                0,
                 25
             );
-            var JavonteWilliams = new Player(
-                "Javonte Williams",
-                "Gorillas",
-                "Broncos",
+            var NickChubb = new Player(
+                "Nick Chubb",
+                "nick-chubb.png",
+                Teams.Benchwarmers,
+                "Browns",
                 "RB",
-                7.00,
-                16,
-                11.13,
-                22
-            );
-            var KylePitts = new Player(
-                "Kyle Pitts",
-                "Pigeon Boys",
-                "Falcons",
-                "TE",
-                7.00,
-                5,
-                8.80,
-                21
-            );
-            var JamesConnor = new Player(
-                "James Connor",
-                "Homelander",
-                "Cardinals",
-                "RB",
-                7.00,
-                7,
-                15.35,
+                10.51,
+                0,
+                0,
                 27
             );
-            var PatrickMahomes = new Player(
-                "Patrick Mahomes",
-                "Storm Dynasty",
-                "Chiefs",
-                "QB",
-                27.00,
-                4,
-                32.43,
+            var StefonDiggs = new Player(
+                "Stefon Diggs",
+                "stefon-diggs.jpg",
+                Teams.PigeonBoys,
+                "Bills",
+                "WR",
+                7.00,
+                0,
+                0,
+                29
+            );
+            var TonyPollard = new Player(
+                "Tony Pollard",
+                "tony-pollard.webp",
+                Teams.Ram,
+                "Cowboys",
+                "RB",
+                7.00,
+                0,
+                0,
                 26
             );
-            var DerrickHenry = new Player(
-                "Derrick Henry",
-                "Pigeon Boys",
-                "Titans",
-                "RB",
-                21.50,
-                13,
-                23.20,
-                28
+            var TravisKelce = new Player(
+                "Travis Kelce",
+                "travis-kelce.jpg",
+                Teams.Power,
+                "Chiefs",
+                "TE",
+                19.00,
+                0,
+                0,
+                33
+            );
+            var TyreekHill = new Player(
+                "Tyreek Hill",
+                "tyreek-hill.jpg",
+                Teams.StormDynasty,
+                "Dolphins",
+                "WR",
+                9.51,
+                0,
+                0,
+                29
             );
 
-            players.AddLast(TravisEtienne);
-            players.AddLast(MikeEvans);
-            players.AddLast(LeonardFournette);
-            players.AddLast(AustinEkler);
-            players.AddLast(JMarrChase);
-            players.AddLast(MarkAndrews);
-            players.AddLast(CeedeeLamb);
-            players.AddLast(MikeWilliams);
-            players.AddLast(SaquonBarkley);
-            players.AddLast(JavonteWilliams);
-            players.AddLast(KylePitts);
-            players.AddLast(JamesConnor);
-            players.AddLast(PatrickMahomes);
-            players.AddLast(DerrickHenry);
+            players.AddLast(AmonRaStBrown);
+            players.AddLast(BreeceHall);
+            players.AddLast(GarrettWilson);
+            players.AddLast(JoshJacobs);
+            players.AddLast(NickChubb);
+            players.AddLast(StefonDiggs);
+            players.AddLast(TonyPollard);
+            players.AddLast(TravisKelce);
+            players.AddLast(TyreekHill);
 
             return players;
         }
@@ -195,102 +146,111 @@ namespace server.Controllers
         {
             var players = new List<Player>
             {
-                new Player("J.K. Dobbins", 7.00, 2),
-                new Player("Aaron Jones", 15.00, 1),
-                new Player("Joe Mixon", 21.00, 1),
+                new("J.K. Dobbins", 7.00, 1),
+                new("Mark Andrews", 13.50, 2),
             };
 
-            return new Team("Yellowstone", 6.48, players);
+            return new Team(Teams.Yellowstone, 6.48, players);
         }
 
         private static Team CreateTheHomelander()
         {
-            var players = new List<Player>() { new Player("Dalvin Cook", 26.50, 1), };
+            var players = new List<Player>() {
+                new("Saquon Barkley", 11.50, 1),
+                new("Ja'Marr Chase", 14.50, 3),
+            };
 
-            return new Team("The Homelander", 12.11, players);
+            return new Team(Teams.Homelander, 5.95, players);
         }
 
         private static Team CreatePigeonBoys()
         {
             var players = new List<Player>
             {
-                new Player("Justin Herbert", 11.50, 3),
-                new Player("D'Andre Swift", 12.00, 2),
+                new("Justin Herbert", 11.50, 2),
+                new("D'Andre Swift", 12.00, 1),
+                new("Kyle Pitts", 12.50, 3),
             };
 
-            return new Team("Pigeon Boys", 2.45, players);
+            return new Team(Teams.PigeonBoys, 0, players);
         }
 
         private static Team CreateDactyls()
         {
             var players = new List<Player>
             {
-                new Player("Alvin Kamara", 12.60, 3),
-                new Player("Christian McCaffrey", 32.00, 2),
-                new Player("George Kittle", 14.00, 1),
+                new("Austin Ekeler", 29.00, 2),
+                new("Javonte Williams", 23.00, 2),
             };
 
-            return new Team("Dactyls", 0, players);
+            return new Team(Teams.Dactyls, 0, players);
         }
 
         private static Team CreateODBs()
         {
             var players = new List<Player>
             {
-                new Player("Josh Allen", 24.00, 3),
-                new Player("Chris Godwin", 18.50, 1),
-                new Player("Justin Jefferson", 18.00, 3),
+                new("Josh Allen", 24.00, 2),
+                new("Justin Jefferson", 18.00, 2),
             };
 
-            return new Team("ODBs", 3.86, players);
+            return new Team(Teams.ODBs, 7.19, players);
         }
 
         private static Team CreateStormDynasty()
         {
             var players = new List<Player>
             {
-                new Player("Jonathan Taylor", 7.50, 2),
-                new Player("Travis Kelce", 19.00, 1),
+                new("Patrick Mahommes", 27.00, 2),
+                new("Jonathan Taylor", 7.50, 1),
+                new("CeeDee Lamb", 13.00, 2),
             };
 
-            return new Team("Storm Dynasty", 0, players);
+            return new Team(Teams.StormDynasty, 0, players);
         }
 
         private static Team CreateBenchwarmers()
         {
-            var players = new List<Player>();
+            var players = new List<Player>
+            {
+                new("Derrick Henry", 31.00, 3),
+                new("Mike Evans", 9.00, 1),
+                new("Mike Williams", 7.00, 1),
+            };
 
-            return new Team("Benchwarmers", 12.08, players);
+            return new Team(Teams.Benchwarmers, 4.90, players);
         }
 
         private static Team CreateGorillas()
         {
-            var players = new List<Player> { new Player("DK Metcalf", 7.23, 1), };
+            var players = new List<Player> {
+                new("Najee Harris", 8.21, 2),
+                new("Tee Higgins", 8.74, 1),
+            };
 
-            return new Team("Gorillas", 0, players);
+            return new Team(Teams.Gorillas, 10.07, players);
         }
 
         private static Team CreatePower()
         {
             var players = new List<Player>
             {
-                new Player("Lamar Jackson", 28.00, 1),
-                new Player("Antonio Gibson", 21.00, 3),
-                new Player("Davante Adams", 25.00, 1),
+                new("Travis Etienne", 12.00, 3),
             };
 
-            return new Team("Power", 0, players);
+            return new Team(Teams.Power, 7.35, players);
         }
 
         private static Team CreateRam()
         {
             var players = new List<Player>
             {
-                new Player("Najee Harris", 8.21, 3),
-                new Player("A.J. Brown", 9.79, 2),
+                new("Christian McCaffrey", 32.00, 1),
+                new("A.J. Brown", 9.79, 1),
+                new("Cooper Cupp", 12.62, 1),
             };
 
-            return new Team("Ram", 10.33, players);
+            return new Team(Teams.Ram, 0, players);
         }
     }
 }

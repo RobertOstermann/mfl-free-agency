@@ -35,6 +35,7 @@ function PlayerCard(props: any) {
           variant="top"
           src={src}
           alt={player}
+          height={150}
           onLoad={() => {
             setImageLoaded(true);
           }}

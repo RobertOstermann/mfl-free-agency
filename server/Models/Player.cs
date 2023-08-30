@@ -71,7 +71,7 @@ namespace server.Models
         )
         {
             Name = player;
-            Src = player.ToLower().Replace(" ", "-").Replace("'", "") + ".gif";
+            Src = player.ToLower().Replace(" ", "-").Replace("'", "").Replace(".", "") + ".gif";
             MflTeam = mflTeam;
             OriginalRights = mflTeam;
             NflTeam = nflTeam;

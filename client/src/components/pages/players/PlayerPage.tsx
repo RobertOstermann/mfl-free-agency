@@ -45,7 +45,7 @@ function PlayerPage() {
           <PlayerCard
             key={index}
             player={player.name}
-            src={`images/players/${player.src}`}
+            src={`images/players/${new Date().getFullYear()}/${player.src}`}
             teamNFL={player.nflTeam}
             teamMFL={player.mflTeam}
             salary={player.salary}

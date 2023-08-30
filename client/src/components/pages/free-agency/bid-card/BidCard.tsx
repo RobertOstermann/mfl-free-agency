@@ -37,16 +37,12 @@ function BidCard() {
     };
   }, [connection]);
 
-  const getSource = (): string | undefined => {
+  const getSource = (): string => {
     let src = undefined;
-    try {
+    if (imageSrc === "football-field.gif") {
       src = `/images/players/${imageSrc}`;
-    } catch (error) {
-      try {
-        src = "/imagesplayers/football-field.jpg";
-      } catch (error) {
-        src = undefined;
-      }
+    } else {
+      src = `/images/players/${new Date().getFullYear()}/${imageSrc}`;
     }
 
     return src;
@@ -66,6 +62,8 @@ function BidCard() {
         variant="top"
         src={getSource()}
         alt={imageAlt}
+        width={300}
+        height={200}
         onLoad={() => {
           setImageLoaded(true);
         }}
