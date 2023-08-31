@@ -128,6 +128,28 @@ namespace server.Controllers
                 0,
                 29
             );
+            var JaylenWaddle = new Player(
+                "Jaylen Waddle",
+                "jaylen-waddle.jpg",
+                Teams.ODBs,
+                "Dolphins",
+                "WR",
+                7.23,
+                0,
+                0,
+                24
+            );
+            var CalvinRidley = new Player(
+                "Calvin Ridley",
+                "calvin-ridley.jpeg",
+                "_",
+                "Jaguars",
+                "WR",
+                7.00,
+                0,
+                0,
+                28
+            );
 
             players.AddLast(AmonRaStBrown);
             players.AddLast(BreeceHall);
@@ -138,6 +160,8 @@ namespace server.Controllers
             players.AddLast(TonyPollard);
             players.AddLast(TravisKelce);
             players.AddLast(TyreekHill);
+            players.AddLast(JaylenWaddle);
+            players.AddLast(CalvinRidley);
 
             return players;
         }
