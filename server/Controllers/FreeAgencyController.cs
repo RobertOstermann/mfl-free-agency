@@ -36,8 +36,8 @@ namespace server.Controllers
                 "Lions",
                 "WR",
                 7.00,
-                0,
-                0,
+                8,
+                13.41,
                 23
             );
             var BreeceHall = new Player(
@@ -47,8 +47,8 @@ namespace server.Controllers
                 "Jets",
                 "RB",
                 7.25,
-                0,
-                0,
+                42,
+                15.09,
                 22
             );
             var GarrettWilson = new Player(
@@ -58,8 +58,8 @@ namespace server.Controllers
                 "Jets",
                 "WR",
                 7.00,
-                0,
-                0,
+                19,
+                10.25,
                 23
             );
             var JoshJacobs = new Player(
@@ -69,8 +69,8 @@ namespace server.Controllers
                 "Raiders",
                 "RB",
                 7.00,
-                0,
-                0,
+                3,
+                17.75,
                 25
             );
             var NickChubb = new Player(
@@ -80,8 +80,8 @@ namespace server.Controllers
                 "Browns",
                 "RB",
                 10.51,
-                0,
-                0,
+                5,
+                15.76,
                 27
             );
             var StefonDiggs = new Player(
@@ -91,8 +91,8 @@ namespace server.Controllers
                 "Bills",
                 "WR",
                 7.00,
-                0,
-                0,
+                4,
+                16.41,
                 29
             );
             var TonyPollard = new Player(
@@ -102,8 +102,8 @@ namespace server.Controllers
                 "Cowboys",
                 "RB",
                 7.00,
-                0,
-                0,
+                7,
+                14.33,
                 26
             );
             var TravisKelce = new Player(
@@ -113,8 +113,8 @@ namespace server.Controllers
                 "Chiefs",
                 "TE",
                 19.00,
-                0,
-                0,
+                1,
+                15.37,
                 33
             );
             var TyreekHill = new Player(
@@ -124,8 +124,8 @@ namespace server.Controllers
                 "Dolphins",
                 "WR",
                 9.51,
-                0,
-                0,
+                2,
+                16.92,
                 29
             );
             var JaylenWaddle = new Player(
@@ -135,8 +135,8 @@ namespace server.Controllers
                 "Dolphins",
                 "WR",
                 7.23,
-                0,
-                0,
+                7,
+                13.04,
                 24
             );
             var CalvinRidley = new Player(
