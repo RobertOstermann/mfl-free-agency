@@ -214,11 +214,10 @@ namespace server.Controllers
             var players = new List<Player>
             {
                 new("Derrick Henry", 31.00, 3),
-                new("Mike Evans", 9.00, 1),
                 new("Mike Williams", 7.00, 1),
             };
 
-            return new Team(Teams.Benchwarmers, 4.90, players);
+            return new Team(Teams.Benchwarmers, 7.35, players);
         }
 
         private static Team CreateGorillas()
