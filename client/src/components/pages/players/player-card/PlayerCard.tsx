@@ -56,9 +56,9 @@ function PlayerCard(props: any) {
             <br />
             {`Age: ${age}`}
             <br />
-            {`2021 Average: ${prevFantasyAverage.toFixed(2)}`}
+            {`${new Date().getFullYear() - 1} Average: ${prevFantasyAverage.toFixed(2)}`}
             <br />
-            {`2021 Position Rank: ${prevPositionRank}`}
+            {`${new Date().getFullYear() - 1} Position Rank: ${prevPositionRank}`}
           </Card.Text>
         </Card.Body>
       </Card>

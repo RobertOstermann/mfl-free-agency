@@ -29,16 +29,16 @@ namespace server.Controllers
         {
             var players = new LinkedList<Player>();
 
-            var AmonRaStBrown = new Player(
-                "Amon-Ra St. Brown",
-                "amon-ra-st-brown.jpg",
-                Teams.Homelander,
-                "Lions",
-                "WR",
-                7.00,
-                8,
-                13.41,
-                23
+            var TravisKelce = new Player(
+                "Travis Kelce",
+                "travis-kelce.jpg",
+                Teams.Power,
+                "Chiefs",
+                "TE",
+                19.00,
+                1,
+                15.37,
+                33
             );
             var BreeceHall = new Player(
                 "Breece Hall",
@@ -95,28 +95,6 @@ namespace server.Controllers
                 16.41,
                 29
             );
-            var TonyPollard = new Player(
-                "Tony Pollard",
-                "tony-pollard.webp",
-                Teams.Ram,
-                "Cowboys",
-                "RB",
-                7.00,
-                7,
-                14.33,
-                26
-            );
-            var TravisKelce = new Player(
-                "Travis Kelce",
-                "travis-kelce.jpg",
-                Teams.Power,
-                "Chiefs",
-                "TE",
-                19.00,
-                1,
-                15.37,
-                33
-            );
             var TyreekHill = new Player(
                 "Tyreek Hill",
                 "tyreek-hill.jpg",
@@ -150,18 +128,112 @@ namespace server.Controllers
                 0,
                 28
             );
+            var GeorgeKittle = new Player(
+                "George Kittle",
+                "george-kittle.webp",
+                Teams.Dactyls,
+                "49ers",
+                "TE",
+                14.00,
+                3,
+                11.37,
+                29
+            );
+            var JalenHurts = new Player(
+                "Jalen Hurts",
+                "jalen-hurts.jpg",
+                Teams.Ram,
+                "Eagles",
+                "QB",
+                16.13,
+                4,
+                33.22,
+                25
+            );
+            var JoeBurrow = new Player(
+                "Joe Burrow",
+                "joe-burrow.jpg",
+                Teams.Gorillas,
+                "Bengals",
+                "QB",
+                15.32,
+                3,
+                32.08,
+                26
+            );
+            var AaronJones = new Player(
+                "Aaron Jones",
+                "aaron-jones.webp",
+                Teams.Yellowstone,
+                "Packers",
+                "RB",
+                15.00,
+                9,
+                12.89,
+                28
+            );
+            var DevontaSmith = new Player(
+                "Devonta Smith",
+                "devonta-smith.webp",
+                Teams.Yellowstone,
+                "Eagles",
+                "WR",
+                7.00,
+                9,
+                12.18,
+                24
+            );
+            var RhamondreStevenson = new Player(
+                "Rhamondre Stevenson",
+                "rhamondre-stevenson.jpg",
+                Teams.ODBs,
+                "Patriots",
+                "RB",
+                7.00,
+                11,
+                12.62,
+                25
+            );
+            var DonovanPeoplesJones = new Player(
+                "Donovan Peoples-Jones",
+                "donovan-peoples-jones.jpg",
+                Teams.Benchwarmers,
+                "Browns",
+                "WR",
+                7.00,
+                40,
+                8.04,
+                24
+            );
+            var KenWalker = new Player(
+                "Ken Walker",
+                "ken-walker.webp",
+                Teams.Homelander,
+                "Seahawks",
+                "RB",
+                7.00,
+                16,
+                12.60,
+                22
+            );
 
-            players.AddLast(AmonRaStBrown);
-            players.AddLast(BreeceHall);
-            players.AddLast(GarrettWilson);
-            players.AddLast(JoshJacobs);
-            players.AddLast(NickChubb);
-            players.AddLast(StefonDiggs);
-            players.AddLast(TonyPollard);
             players.AddLast(TravisKelce);
-            players.AddLast(TyreekHill);
+            players.AddLast(NickChubb);
+            players.AddLast(JoshJacobs);
+            players.AddLast(GeorgeKittle);
+            players.AddLast(JalenHurts);
+            players.AddLast(JoeBurrow);
             players.AddLast(JaylenWaddle);
             players.AddLast(CalvinRidley);
+            players.AddLast(AaronJones);
+            players.AddLast(TyreekHill);
+            players.AddLast(BreeceHall);
+            players.AddLast(StefonDiggs);
+            players.AddLast(DevontaSmith);
+            players.AddLast(RhamondreStevenson);
+            players.AddLast(DonovanPeoplesJones);
+            players.AddLast(KenWalker);
+            players.AddLast(GarrettWilson);
 
             return players;
         }
