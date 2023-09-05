@@ -32,7 +32,7 @@ namespace server.Controllers
             var TravisKelce = new Player(
                 "Travis Kelce",
                 "travis-kelce.jpg",
-                Teams.Power,
+                Teams.StormDynasty,
                 "Chiefs",
                 "TE",
                 19.00,
@@ -90,7 +90,7 @@ namespace server.Controllers
                 Teams.PigeonBoys,
                 "Bills",
                 "WR",
-                7.00,
+                10.25,
                 4,
                 16.41,
                 29
@@ -120,7 +120,7 @@ namespace server.Controllers
             var CalvinRidley = new Player(
                 "Calvin Ridley",
                 "calvin-ridley.jpeg",
-                "_",
+                "None",
                 "Jaguars",
                 "WR",
                 7.00,
@@ -313,7 +313,7 @@ namespace server.Controllers
                 new("Mike Williams", 7.00, 1),
             };
 
-            return new Team(Teams.Benchwarmers, 7.35, players);
+            return new Team(Teams.Benchwarmers, 8.05, players);
         }
 
         private static Team CreateGorillas()
