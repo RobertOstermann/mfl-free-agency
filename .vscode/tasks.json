@@ -90,6 +90,7 @@
       "args": [
         "watch",
         "run",
+        "--non-interactive",
         "--project",
         "${workspaceFolder}/server/server.csproj",
         "--launch-profile",
@@ -109,6 +110,7 @@
       "args": [
         "watch",
         "run",
+        "--non-interactive",
         "--project",
         "${workspaceFolder}/server/server.csproj",
         "/property:GenerateFullPaths=true",
@@ -128,6 +130,7 @@
       "args": [
         "watch",
         "run",
+        "--non-interactive",
         "--project",
         "${workspaceFolder}/server/server.csproj",
         "--launch-profile",
