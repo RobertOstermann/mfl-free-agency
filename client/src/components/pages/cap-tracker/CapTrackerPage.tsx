@@ -111,7 +111,7 @@ export function CapTrackerPage() {
       <br />
       <p>
         Please do not repeatedly click the request button, once every minute or
-        so should be ok. Any more and the MFL website will block the requests.
+        so should be ok.
       </p>
       <p>
         The <b>Max Cost of Next Player</b> assumes the remainder of your roster,
