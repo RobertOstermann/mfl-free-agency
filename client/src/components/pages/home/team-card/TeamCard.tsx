@@ -4,12 +4,11 @@ import { useNavigate } from "@tanstack/react-router";
 import classNames from "classnames";
 
 import { FreeAgencyHub } from "components/Hub";
-import { freeAgencyRoute } from "components/router/pages/free-agency";
 import { useBoundStore } from "store/Store";
 
 import styles from "./TeamCard.module.scss";
 
-function TeamCard(props: any) {
+export function TeamCard(props: any) {
   const { team, src, league } = props;
 
   const connection = useBoundStore((state) => state.connection);
@@ -41,7 +40,7 @@ function TeamCard(props: any) {
           setCurrentTeam(true);
         }
 
-        navigate({ to: freeAgencyRoute.to });
+        navigate({ to: "/free-agency" });
       });
 
       connection.on(FreeAgencyHub.ReceiveSetTeam, (serverTeam: any) => {
@@ -142,5 +141,3 @@ function TeamCard(props: any) {
     </Col>
   );
 }
-
-export default TeamCard;

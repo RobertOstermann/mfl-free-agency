@@ -3,13 +3,13 @@ import { Card } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
 import { useBoundStore } from "store/Store";
-import ChatInput from "./chat-input/ChatInput";
-import ChatList from "./chat-list/ChatList";
-import ChatMessageType from "./chat-message/ChatMessageType";
+import { ChatInput } from "./chat-input/ChatInput";
+import { ChatList } from "./chat-list/ChatList";
+import { ChatMessageType } from "./chat-message/ChatMessageType";
 
 import styles from "./ChatBox.module.scss";
 
-function ChatBox() {
+export function ChatBox() {
   const connection = useBoundStore((state) => state.connection);
 
   const [messages, setMessages] = useState<any>([]);
@@ -136,5 +136,3 @@ function ChatBox() {
     </Card>
   );
 }
-
-export default ChatBox;

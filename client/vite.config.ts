@@ -1,8 +1,11 @@
 /// <reference types="vitest" />
 /* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-ignore
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import fs from "fs";
-import { defineConfig, loadEnv, PluginOption, UserConfigExport } from "vite";
+import type { PluginOption, UserConfigExport } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const fullReloadAlways: PluginOption = {
@@ -13,6 +16,7 @@ const fullReloadAlways: PluginOption = {
 } as PluginOption;
 
 // https://vitejs.dev/config/
+// eslint-disable-next-line import/no-default-export
 export default defineConfig(({ command, mode }) => {
   // Load env file based on `mode` in the current working directory.
   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
@@ -22,6 +26,10 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react(),
       tsconfigPaths(),
+      TanStackRouterVite({
+        routesDirectory: "./src/router/routes",
+        generatedRouteTree: "./src/router/routeTree.gen.ts",
+      }),
     ],
 
     test: {
@@ -32,6 +40,7 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: '@import "./src/styles/_MFLManagerColors.scss";',
+          quietDeps: true,
         },
       },
     },

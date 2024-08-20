@@ -1,8 +1,8 @@
 import React from "react";
 
-import ChatMessage from "../chat-message/ChatMessage";
+import { ChatMessage } from "../chat-message/ChatMessage";
 
-function ChatList(props: any) {
+export function ChatList(props: any) {
   const { messages } = props;
 
   return (
@@ -20,5 +20,3 @@ function ChatList(props: any) {
     </React.Fragment>
   );
 }
-
-export default ChatList;

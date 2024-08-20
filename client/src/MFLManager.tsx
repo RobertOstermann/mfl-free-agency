@@ -4,14 +4,14 @@ import { HubConnectionBuilder, HubConnectionState, LogLevel } from "@microsoft/s
 import { Outlet } from "@tanstack/react-router";
 
 import { FreeAgencyHub } from "components/Hub";
-import Api from "./api/Api";
-import Footer from "./components/footer/Footer";
-import NavBar from "./components/navbar/NavBar";
+import { NavBar } from "components/navbar/NavBar";
+import { Api } from "./api/Api";
+import { Footer } from "./components/footer/Footer";
 import { useBoundStore } from "./store/Store";
 
 import "MFLManager.scss";
 
-function MFLManager() {
+export function MFLManager() {
   const [, setCookie, removeCookie] = useCookies(["TeamCookie"]);
 
   const connection = useBoundStore((state) => state.connection);
@@ -62,5 +62,3 @@ function MFLManager() {
     </div>
   );
 }
-
-export default MFLManager;

@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 
 import styles from "./BidInformation.module.scss";
 
-function BidInformation(props: any) {
+export function BidInformation(props: any) {
   const { leadBid, leadTeam, contractYears } = props;
 
   return (
@@ -23,5 +23,3 @@ function BidInformation(props: any) {
     </React.Fragment>
   );
 }
-
-export default BidInformation;

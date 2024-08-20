@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { TeamCard } from "components/pages/home/team-card/TeamCard";
 import { useBoundStore } from "store/Store";
-import TeamCard from "./team-card/TeamCard";
 import TeamData from "./TeamData.json";
 
 import styles from "./HomePage.module.scss";
 
-function HomePage() {
+export function HomePage() {
   const connection = useBoundStore((state) => state.connection);
 
   const [teamData, setTeamData] = useState<any>(null);
@@ -70,5 +70,3 @@ function HomePage() {
     </React.Fragment>
   );
 }
-
-export default HomePage;

@@ -2,16 +2,14 @@ import React from "react";
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import { useNavigate } from "@tanstack/react-router";
 
-import { homeRoute } from "components/router/pages/home";
-
 import styles from "./GuestInput.module.scss";
 
-function GuestInput(props: any) {
+export function GuestInput(props: any) {
   const { leadBid } = props;
   const navigate = useNavigate();
 
   const selectTeam = () => {
-    navigate({ to: homeRoute.to });
+    navigate({ to: "/" });
   };
 
   return (
@@ -38,5 +36,3 @@ function GuestInput(props: any) {
     </React.Fragment>
   );
 }
-
-export default GuestInput;

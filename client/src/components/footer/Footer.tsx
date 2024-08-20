@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 import styles from "./Footer.module.scss";
 
-function Footer() {
+export function Footer() {
   return (
     <footer className={styles["footer"]}>
       <Container fluid>
@@ -18,5 +18,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

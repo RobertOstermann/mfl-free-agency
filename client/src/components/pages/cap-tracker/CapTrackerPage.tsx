@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import axios from "axios";
 
-import Api from "api/Api";
+import { Api } from "api/Api";
 
-function CapTrackerPage() {
+export function CapTrackerPage() {
   const [res, setRes] = useState<any>([]);
   const [salaryAdjustmentsResponse, setSalaryAdjustmentsResponse] = useState<any>();
 
@@ -143,5 +143,3 @@ function CapTrackerPage() {
     </React.Fragment>
   );
 }
-
-export default CapTrackerPage;

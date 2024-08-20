@@ -6,7 +6,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./BidInputOptIn.module.scss";
 
-function BidInputOptIn(props: any) {
+export function BidInputOptIn(props: any) {
   const { leadBid } = props;
   const inputRef = useRef<any>(null);
 
@@ -63,5 +63,3 @@ function BidInputOptIn(props: any) {
     </React.Fragment>
   );
 }
-
-export default BidInputOptIn;

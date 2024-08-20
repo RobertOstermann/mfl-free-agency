@@ -1,29 +1,48 @@
 import React from "react";
-import { Button, Nav, NavLinkProps } from "react-bootstrap";
-import { Link, LinkPropsOptions } from "@tanstack/react-router";
+import type { NavLinkProps } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
+import type { AnyRouter, LinkComponent, LinkProps, RegisteredRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 import styles from "./NavBarButton.module.scss";
 
-type NavBarButtonProps = {
+type Props<
+  TRouter extends AnyRouter = RegisteredRouter,
+  TFrom extends string = string,
+  TTo extends string = ""
+> = {
   eventKey: any,
   text: string,
-} & NavLinkProps & LinkPropsOptions;
+  linkProps: LinkProps<TRouter, TFrom, TTo>,
+  navLinkProps?: NavLinkProps;
+};
 
-function NavBarButton(props: NavBarButtonProps) {
+export function NavBarButton<
+  TRouter extends AnyRouter = RegisteredRouter,
+  TFrom extends string = string,
+  TTo extends string = ""
+>(props: Props<TRouter, TFrom, TTo>) {
+  const {
+    eventKey,
+    text,
+    linkProps,
+    navLinkProps,
+  } = props;
+
   return (
     <Nav.Link
-      as={Link}
-      to={props.to}
+      as={Link as LinkComponent<"a">}
+      to={linkProps.to}
       activeProps={{
         className: styles["nav-link-active"],
       }}
-      {...props}
+      eventKey={eventKey}
+      {...navLinkProps}
+      {...linkProps}
     >
       <Button variant="primary" className={styles["navbar-btn"]}>
-        {props.text}
+        {text}
       </Button>
     </Nav.Link>
   );
 }
-
-export default NavBarButton;

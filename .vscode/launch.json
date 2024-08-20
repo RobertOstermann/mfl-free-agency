@@ -1,42 +1,86 @@
 {
   "version": "0.2.0",
   "configurations": [
+    /* Client */
     {
-      "name": "Attach to Chrome",
-      "port": 9222,
-      "request": "attach",
+      "name": "Client",
       "type": "chrome",
-      "webRoot": "${workspaceFolder}"
+      "port": 9222,
+      "preLaunchTask": "client - start debug",
+      "postDebugTask": "client - stop debug",
+      "request": "attach",
+      "urlFilter": "https://localhost*",
+      "pauseForSourceMap": false,
+      "resolveSourceMapLocations": ["!**/node_modules/**"],
+      "webRoot": "${workspaceFolder}/client/",
+      "presentation": {
+        "hidden": false,
+        "group": "Client",
+        "order": 1
+      }
     },
+    /* Server */
     {
-      // Use IntelliSense to find out which attributes exist for C# debugging
-      // Use hover for the description of the existing attributes
-      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-      "name": ".NET Core Launch (web)",
-      "type": "coreclr",
+      "name": "Server",
+      "type": "dotnetwatchattach",
+      "task": "server - dotnet watch (api)",
       "request": "launch",
-      "preLaunchTask": "build",
-      // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/server/bin/Debug/net5.0/MFL-Manager.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/server",
-      "stopAtEntry": false,
-      // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      "program": "server.exe",
+      "args": {
+        "logging": {
+          "moduleLoad": false
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+        }
       },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+      "osx": {
+        "program": "server",
+        "args": {
+          "logging": {
+            "moduleLoad": false
+          },
+          "env": {
+            "DOTNET_USE_POLLING_FILE_WATCHER": "true"
+          }
+        }
       },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
+      "linux": {
+        "program": "server",
+        "args": {
+          "logging": {
+            "moduleLoad": false
+          },
+          "env": {
+            "DOTNET_USE_POLLING_FILE_WATCHER": "true"
+          }
+        }
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Server",
+        "order": 1
       }
     },
     {
-      "name": ".NET Core Attach",
+      "name": "Server - coreclr",
       "type": "coreclr",
-      "request": "attach"
+      "request": "launch",
+      "preLaunchTask": "server - dotnet build",
+      "program": "${workspaceFolder}/server/bin/Debug/net8.0/server.dll",
+      "cwd": "${workspaceFolder}/server",
+      "stopAtEntry": false,
+      "launchSettingsFilePath": "${workspaceFolder}/server/Properties/launchSettings.json",
+      "launchSettingsProfile": "api",
+      "logging": {
+        "moduleLoad": false
+      },
+      "presentation": {
+        "hidden": true,
+        "group": "Server",
+        "order": 2
+      }
     }
   ]
 }

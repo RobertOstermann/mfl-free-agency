@@ -6,7 +6,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./CommissionerInput.module.scss";
 
-function CommissionerInput() {
+export function CommissionerInput() {
   const connection = useBoundStore((state) => state.connection);
 
   const [commissioner, setCommissioner] = useState(false);
@@ -149,5 +149,3 @@ function CommissionerInput() {
     </React.Fragment>
   );
 }
-
-export default CommissionerInput;

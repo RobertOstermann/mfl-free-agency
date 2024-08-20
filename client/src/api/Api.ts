@@ -1,6 +1,4 @@
-import { AxiosRequestConfig } from "axios";
-
-export default class Api {
+export class Api {
   private static getApiRoute = () => {
     let api = "https://localhost:5001/api/v1";
     if (process.env.NODE_ENV === "production") {

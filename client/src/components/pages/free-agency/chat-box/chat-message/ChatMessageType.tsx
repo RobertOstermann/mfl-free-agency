@@ -1,4 +1,4 @@
-const ChatMessageType = Object.freeze({
+export const ChatMessageType = Object.freeze({
   ReceiveMessage: {
     card: "chatmessage-card-receive",
     body: "chatmessage-body-receive",
@@ -36,5 +36,3 @@ const ChatMessageType = Object.freeze({
     footer: "chatmessage-footer-server",
   },
 });
-
-export default ChatMessageType;

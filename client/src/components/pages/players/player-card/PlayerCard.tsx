@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import styles from "./PlayerCard.module.scss";
 
-function PlayerCard(props: any) {
+export function PlayerCard(props: any) {
   const {
     player,
     src,
@@ -65,5 +65,3 @@ function PlayerCard(props: any) {
     </Col>
   );
 }
-
-export default PlayerCard;

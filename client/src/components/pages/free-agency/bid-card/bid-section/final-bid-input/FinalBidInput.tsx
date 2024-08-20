@@ -9,7 +9,7 @@ import {
 
 import styles from "./FinalBidInput.module.scss";
 
-function FinalBidInput(props: any) {
+export function FinalBidInput(props: any) {
   const {
     leadBid,
     currentBid,
@@ -117,5 +117,3 @@ function FinalBidInput(props: any) {
     </React.Fragment>
   );
 }
-
-export default FinalBidInput;

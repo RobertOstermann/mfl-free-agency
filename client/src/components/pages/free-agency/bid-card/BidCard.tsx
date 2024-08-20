@@ -4,11 +4,11 @@ import classNames from "classnames";
 
 import { FreeAgencyHub } from "components/Hub";
 import { useBoundStore } from "store/Store";
-import BidSection from "./bid-section/BidSection";
+import { BidSection } from "./bid-section/BidSection";
 
 import styles from "./BidCard.module.scss";
 
-function BidCard() {
+export function BidCard() {
   const connection = useBoundStore((state) => state.connection);
 
   const [imageSrc, setImageSrc] = useState("football-field.gif");
@@ -80,5 +80,3 @@ function BidCard() {
     </Card>
   );
 }
-
-export default BidCard;

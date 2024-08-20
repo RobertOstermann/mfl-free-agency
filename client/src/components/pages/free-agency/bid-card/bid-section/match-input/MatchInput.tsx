@@ -12,7 +12,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./MatchInput.module.scss";
 
-function MatchInput(props: any) {
+export function MatchInput(props: any) {
   const { leadBid, contractYears } = props;
 
   const connection = useBoundStore((state) => state.connection);
@@ -132,5 +132,3 @@ function MatchInput(props: any) {
     </React.Fragment>
   );
 }
-
-export default MatchInput;

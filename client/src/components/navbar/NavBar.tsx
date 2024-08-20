@@ -1,15 +1,10 @@
-import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 
-import NavBarButton from "components/navbar/NavBarButton";
-import { capTrackerRoute } from "components/router/pages/cap-tracker";
-import { freeAgencyRoute } from "components/router/pages/free-agency";
-import { homeRoute } from "components/router/pages/home";
-import { playersRoute } from "components/router/pages/players";
+import { NavBarButton } from "components/navbar/NavBarButton";
 
 import styles from "./NavBar.module.scss";
 
-function NavBar() {
+export function NavBar() {
   return (
     <header className={styles["header"]}>
       <Navbar
@@ -38,32 +33,40 @@ function NavBar() {
           <Nav className="ml-auto">
             <NavBarButton
               eventKey={"1"}
-              to={homeRoute.to}
               text={"Home"}
+              linkProps={{
+                to: "/",
+              }}
             />
             <NavBarButton
               eventKey={"2"}
-              to={capTrackerRoute.to}
-              activeOptions={{
-                exact: false,
-              }}
               text={"Cap"}
+              linkProps={{
+                to: "/cap-tracker",
+                activeOptions: {
+                  exact: false,
+                },
+              }}
             />
             <NavBarButton
               eventKey={"3"}
-              to={playersRoute.to}
-              activeOptions={{
-                exact: false,
-              }}
               text={"Players"}
+              linkProps={{
+                to: "/players",
+                activeOptions: {
+                  exact: false,
+                },
+              }}
             />
             <NavBarButton
               eventKey={"4"}
-              to={freeAgencyRoute.to}
-              activeOptions={{
-                exact: false,
-              }}
               text={"Free Agency"}
+              linkProps={{
+                to: "/free-agency",
+                activeOptions: {
+                  exact: false,
+                },
+              }}
             />
           </Nav>
         </Navbar.Collapse>
@@ -71,5 +74,3 @@ function NavBar() {
     </header>
   );
 }
-
-export default NavBar;

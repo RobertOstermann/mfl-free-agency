@@ -3,10 +3,7 @@
   "tasks": [
     {
       "label": "watch - client & server",
-      "dependsOn": [
-        "server - dotnet watch (api)",
-        "client - npm start"
-      ],
+      "dependsOn": ["server - dotnet watch (api)", "client - npm start"],
       "dependsOrder": "parallel",
       "problemMatcher": []
     },
@@ -63,7 +60,7 @@
       "presentation": {
         "panel": "dedicated",
         "close": false
-      },
+      }
       // "hide": true
     },
     {
@@ -90,17 +87,21 @@
       "args": [
         "watch",
         "run",
-        "--non-interactive",
         "--project",
         "${workspaceFolder}/server/server.csproj",
         "--launch-profile",
         "swagger"
       ],
+      "options": {
+        "env": {
+          "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+        }
+      },
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
         "close": false
-      },
+      }
       // "hide": true
     },
     {
@@ -110,13 +111,17 @@
       "args": [
         "watch",
         "run",
-        "--non-interactive",
         "--project",
         "${workspaceFolder}/server/server.csproj",
         "/property:GenerateFullPaths=true",
         "--launch-profile",
         "api"
       ],
+      "options": {
+        "env": {
+          "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+        }
+      },
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
@@ -173,6 +178,6 @@
       "problemMatcher": "$msCompile",
       "dependsOn": "server - dotnet clean",
       "hide": true
-    },
+    }
   ]
 }

@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 import styles from "./ChatMessage.module.scss";
 
-function ChatMessage(props: any) {
+export function ChatMessage(props: any) {
   const { message, sender, type } = props;
 
   return (
@@ -15,5 +15,3 @@ function ChatMessage(props: any) {
     </Card>
   );
 }
-
-export default ChatMessage;

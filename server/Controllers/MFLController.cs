@@ -6,8 +6,7 @@ namespace server.Controllers
     [Route("api/v1/mfl")]
     public class MFLController : ControllerBase
     {
-        // TODO: Update Base URL when year changes
-        private const string baseURL = "https://www44.myfantasyleague.com/2023";
+        private const string baseURL = "https://www44.myfantasyleague.com";
 
         private const string leagueId = "30916";
 
@@ -50,16 +49,18 @@ namespace server.Controllers
 
         private async Task<string> Roster()
         {
-            string url = $"{baseURL}/export?TYPE=rosters&L={leagueId}&JSON=1";
-            string response = await client.GetStringAsync(url);
+            var year = DateTime.Now.Year;
+            var url = $"{baseURL}/{year}/export?TYPE=rosters&L={leagueId}&JSON=1";
+            var response = await client.GetStringAsync(url);
 
             return response;
         }
 
         private async Task<string> Adjustments()
         {
-            string url = $"{baseURL}/export?TYPE=salaryAdjustments&L={leagueId}&JSON=1";
-            string response = await client.GetStringAsync(url);
+            var year = DateTime.Now.Year;
+            var url = $"{baseURL}/{year}/export?TYPE=salaryAdjustments&L={leagueId}&JSON=1";
+            var response = await client.GetStringAsync(url);
 
             return response;
         }

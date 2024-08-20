@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { ChatBox } from "components/pages/free-agency/chat-box/ChatBox";
+import { RosterCard } from "components/pages/free-agency/roster-card/RosterCard";
 import { useBoundStore } from "store/Store";
-import BidCard from "./bid-card/BidCard";
-import ChatBox from "./chat-box/ChatBox";
-import RosterCard from "./roster-card/RosterCard";
+import { BidCard } from "./bid-card/BidCard";
 
 import styles from "./FreeAgencyPage.module.scss";
 
-function FreeAgencyPage() {
+export function FreeAgencyPage() {
   const connection = useBoundStore((state) => state.connection);
 
   useEffect(() => {
@@ -39,5 +39,3 @@ function FreeAgencyPage() {
     </React.Fragment>
   );
 }
-
-export default FreeAgencyPage;

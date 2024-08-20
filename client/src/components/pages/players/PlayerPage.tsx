@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
+import { PlayerCard } from "components/pages/players/player-card/PlayerCard";
 import { useBoundStore } from "store/Store";
-import PlayerCard from "./player-card/PlayerCard";
 
 import styles from "./PlayerPage.module.scss";
 
-function PlayerPage() {
+export function PlayerPage() {
   const connection = useBoundStore((state) => state.connection);
 
   const [playerData, setPlayerData] = useState<any>(null);
@@ -86,5 +86,3 @@ function PlayerPage() {
     </React.Fragment>
   );
 }
-
-export default PlayerPage;

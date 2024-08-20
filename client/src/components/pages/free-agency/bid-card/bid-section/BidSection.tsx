@@ -3,19 +3,19 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { FreeAgencyHub } from "components/Hub";
 import { useBoundStore } from "store/Store";
-import BidInformation from "./bid-information/BidInformation";
-import BidInput from "./bid-input/BidInput";
-import BidInputOptIn from "./bid-input/BidInputOptIn";
-import BidSectionState from "./BidSectionState";
-import CommissionerInput from "./commissioner-input/CommissionerInput";
-import FinalBidInput from "./final-bid-input/FinalBidInput";
-import GuestInput from "./guest-input/GuestInput";
-import MatchInput from "./match-input/MatchInput";
-import MatchInputWait from "./match-input/MatchInputWait";
+import { BidInformation } from "./bid-information/BidInformation";
+import { BidInput } from "./bid-input/BidInput";
+import { BidInputOptIn } from "./bid-input/BidInputOptIn";
+import { BidSectionState } from "./BidSectionState";
+import { CommissionerInput } from "./commissioner-input/CommissionerInput";
+import { FinalBidInput } from "./final-bid-input/FinalBidInput";
+import { GuestInput } from "./guest-input/GuestInput";
+import { MatchInput } from "./match-input/MatchInput";
+import { MatchInputWait } from "./match-input/MatchInputWait";
 
 // import styles from "./BidSection.module.scss";
 
-function BidSection() {
+export function BidSection() {
   const connection = useBoundStore((state) => state.connection);
 
   const [state, setState] = useState<string>(BidSectionState.Guest);
@@ -231,5 +231,3 @@ function BidSection() {
     </React.Fragment>
   );
 }
-
-export default BidSection;

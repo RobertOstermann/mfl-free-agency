@@ -4,11 +4,11 @@ import { Card, Col, Row } from "react-bootstrap";
 
 import { FreeAgencyHub } from "components/Hub";
 import { useBoundStore } from "store/Store";
-import RosterInput from "./roster-input/RosterInput";
+import { RosterInput } from "./roster-input/RosterInput";
 
 import styles from "./RosterCard.module.scss";
 
-function RosterCard() {
+export function RosterCard() {
   const connection = useBoundStore((state) => state.connection);
 
   const [team, setTeam] = useState<any>("MFL Teams");
@@ -171,5 +171,3 @@ function RosterCard() {
     </Card>
   );
 }
-
-export default RosterCard;

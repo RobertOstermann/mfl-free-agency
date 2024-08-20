@@ -6,7 +6,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./ChatInput.module.scss";
 
-function ChatInput(props: any) {
+export function ChatInput(props: any) {
   const { permissions } = props;
 
   const connection = useBoundStore((state) => state.connection);
@@ -50,7 +50,7 @@ function ChatInput(props: any) {
           <option value="0" defaultValue={"0"}>
             Everyone
           </option>
-          {permissions && (
+          {!!permissions && (
             <React.Fragment>
               <option value="1">Yellowstone</option>
               <option value="2">The Homelander</option>
@@ -78,7 +78,7 @@ function ChatInput(props: any) {
             }
           }}
         />
-        {permissions && (
+        {!!permissions && (
           <Button
             variant="outline-primary"
             className={styles["chatinput-message-button"]}
@@ -91,5 +91,3 @@ function ChatInput(props: any) {
     </React.Fragment>
   );
 }
-
-export default ChatInput;

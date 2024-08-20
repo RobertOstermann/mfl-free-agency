@@ -6,7 +6,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./BidInput.module.scss";
 
-function BidInput(props: any) {
+export function BidInput(props: any) {
   const {
     leadBid,
     currentBid,
@@ -85,5 +85,3 @@ function BidInput(props: any) {
     </React.Fragment>
   );
 }
-
-export default BidInput;

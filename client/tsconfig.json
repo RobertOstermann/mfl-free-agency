@@ -17,7 +17,7 @@
     "jsx": "react-jsx",
     "types": ["node", "vite/client", "vitest/globals"],
     "rootDir": "src",
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "include": ["src"],
   "exclude": ["aspnetcore-*.js"],

@@ -9,7 +9,7 @@ import {
 
 import styles from "./MatchInputWait.module.scss";
 
-function MatchInputWait(props: any) {
+export function MatchInputWait(props: any) {
   const { leadBid, contractYears } = props;
   const inputRef = useRef<any>(null);
   const yearsRef = useRef<any>(null);
@@ -105,5 +105,3 @@ function MatchInputWait(props: any) {
     </React.Fragment>
   );
 }
-
-export default MatchInputWait;

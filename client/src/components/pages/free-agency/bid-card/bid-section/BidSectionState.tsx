@@ -1,4 +1,4 @@
-const BidSectionState = Object.freeze({
+export const BidSectionState = Object.freeze({
   Guest: "guest",
   User: {
     Wait: "wait",
@@ -9,5 +9,3 @@ const BidSectionState = Object.freeze({
     OptOut: "opt-out",
   },
 });
-
-export default BidSectionState;

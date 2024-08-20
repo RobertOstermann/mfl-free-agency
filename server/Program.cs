@@ -41,9 +41,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-// This must be after app.UseRouting
-app.UseRateLimiter();
-
 app.UseAuthentication();
 app.UseAuthorization();
 

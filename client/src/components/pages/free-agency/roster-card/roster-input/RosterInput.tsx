@@ -6,7 +6,7 @@ import { useBoundStore } from "store/Store";
 
 import styles from "./RosterInput.module.scss";
 
-function RosterInput() {
+export function RosterInput() {
   const connection = useBoundStore((state) => state.connection);
 
   const selectRoster = (event: any) => {
@@ -54,5 +54,3 @@ function RosterInput() {
     </InputGroup>
   );
 }
-
-export default RosterInput;
