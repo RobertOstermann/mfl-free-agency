@@ -1,0 +1,14 @@
+name: Setup
+description: Setup Dependencies
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: "8.x"
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20.10.0"

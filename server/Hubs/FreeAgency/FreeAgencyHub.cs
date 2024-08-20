@@ -11,8 +11,8 @@ namespace server.Hubs.FreeAgency
     {
         private static bool _isServerInitialized;
         private static readonly ConcurrentDictionary<string, Team> Connections = new();
-        private static readonly HashSet<string> OptOutIds = new();
-        private static HashSet<Team> Teams = null!;
+        private static readonly HashSet<string> OptOutIds = [];
+        private static HashSet<Team> Teams = [];
         private static LinkedList<Player> Players = null!;
         private static LinkedListNode<Player> _node = null!;
         private static readonly Queue<Message> Messages = new();
