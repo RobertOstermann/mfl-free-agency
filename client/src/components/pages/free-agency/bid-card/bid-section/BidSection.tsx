@@ -25,6 +25,7 @@ export function BidSection() {
   const [contractYears, setContractYears] = useState<any>(0);
   const mountedRef = useRef(true);
 
+  // TODO: Need to get current state when going to the free agency page
   useEffect(() => {
     mountedRef.current = true;
 
