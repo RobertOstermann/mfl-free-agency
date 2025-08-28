@@ -134,102 +134,90 @@ namespace server.Controllers
         {
             var players = new List<Player>
             {
-                new("DeVonta Smith", 10.00, 1),
-                new("Mark Andrews", 13.50, 1),
+                new("Jonathan Taylor", 22.00, 1),
+                new("Sam LaPorta", 14.00, 1),
             };
 
-            return new Team(Teams.Yellowstone, 8.40, players);
+            return new Team(Teams.Yellowstone, 0, players);
         }
 
         private static Team CreateTheHomelander()
         {
-            var players = new List<Player>()
-            {
-                new("Kenneth Walker III", 16.50, 1),
-                new("Ja'Marr Chase", 14.50, 2),
-                new("Tyreek Hill", 26.00, 1),
-            };
+            var players = new List<Player>() { new("Ja'Marr Chase", 14.50, 1) };
 
-            return new Team(Teams.Homelander, 0, players);
+            return new Team(Teams.Homelander, 4.03, players);
         }
 
         private static Team CreatePigeonBoys()
         {
-            var players = new List<Player> { new("Kyle Pitts", 12.50, 2) };
+            var players = new List<Player>();
 
-            return new Team(Teams.PigeonBoys, 12.43, players);
+            return new Team(Teams.PigeonBoys, 4.38, players);
         }
 
         private static Team CreateDactyls()
         {
             var players = new List<Player>
             {
-                new("Bijan Robinson", 12.60, 3),
-                new("Javonte Williams", 23.00, 1),
+                new("Bo Nix", 7.23, 3),
+                new("Bijan Robinson", 12.60, 2),
+                new("Saquon Barkley", 22.00, 1),
             };
 
-            return new Team(Teams.Dactyls, 10.15, players);
+            return new Team(Teams.Dactyls, 0, players);
         }
 
         private static Team CreateODBs()
         {
-            var players = new List<Player>
-            {
-                new("Josh Allen", 24.00, 1),
-                new("Josh Jacobs", 13.50, 2),
-                new("Justin Jefferson", 18.00, 1),
-                new("Jaylen Waddle", 12.50, 3),
-            };
+            var players = new List<Player> { new("Josh Jacobs", 13.50, 1) };
 
-            return new Team(Teams.ODBs, 0, players);
+            return new Team(Teams.ODBs, 4.38, players);
         }
 
         private static Team CreateStormDynasty()
         {
-            var players = new List<Player>
-            {
-                new("Patrick Mahommes", 27.00, 1),
-                new("CeeDee Lamb", 13.00, 1),
-                new("Travis Kelce", 22.00, 1),
-            };
+            var players = new List<Player> { new("Malik Nabers", 7.00, 2) };
 
             return new Team(Teams.StormDynasty, 0, players);
         }
 
         private static Team CreateBenchwarmers()
         {
-            var players = new List<Player> { new("Derrick Henry", 31.00, 2) };
+            var players = new List<Player>
+            {
+                new("Derrick Henry", 31.00, 1),
+                new("Puka Nacua", 10.00, 2),
+            };
 
             return new Team(Teams.Benchwarmers, 0, players);
         }
 
         private static Team CreateGorillas()
         {
-            var players = new List<Player>
-            {
-                new("Joe Burrow", 21.00, 1),
-                new("Najee Harris", 8.21, 1),
-                new("Garrett Wilson", 20.50, 1),
-            };
+            var players = new List<Player> { new("Marvin Harrison Jr.", 9.51, 3) };
 
-            return new Team(Teams.Gorillas, 4.41, players);
+            return new Team(Teams.Gorillas, 0, players);
         }
 
         private static Team CreatePower()
         {
             var players = new List<Player>
             {
-                new("Travis Etienne", 12.00, 2),
-                new("Jahmyr Gibbs", 7.80, 3),
-                new("Breece Hall", 10.00, 3),
+                new("Jahmyr Gibbs", 7.80, 2),
+                new("Breece Hall", 10.00, 2),
+                new("Amon-Ra St. Brown", 19.00, 1),
             };
 
-            return new Team(Teams.Power, 7.35, players);
+            return new Team(Teams.Power, 4.20, players);
         }
 
         private static Team CreateRam()
         {
-            var players = new List<Player> { new("Jalen Hurts", 25.00, 1) };
+            var players = new List<Player>
+            {
+                new("Christian McCaffrey", 35.00, 1),
+                new("Kyren Williams", 15.00, 1),
+            };
 
             return new Team(Teams.Ram, 0, players);
         }
