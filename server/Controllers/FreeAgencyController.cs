@@ -253,7 +253,7 @@ namespace server.Controllers
             players.AddLast(
                 new Player(
                     "Lamar Jackson",
-                    "lamar-jackson.avif",
+                    "lamar-jackson.jpg",
                     Teams.Benchwarmers,
                     "Ravens",
                     "QB",
