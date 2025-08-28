@@ -32,235 +32,235 @@ namespace server.Controllers
             players.AddLast(
                 new Player(
                     "Ladd McConkey",
-                    "",
+                    "ladd-mcconkey.jpg",
                     Teams.Gorillas,
                     "Chargers",
                     "WR",
                     7.00,
-                    0,
-                    0,
-                    0
+                    13,
+                    12.49,
+                    23
                 )
             );
             players.AddLast(
                 new Player(
                     "Josh Allen",
-                    "",
+                    "josh-allen.webp",
                     Teams.ODBs,
                     "Bills",
                     "QB",
                     24.00,
-                    0,
-                    0,
-                    0
+                    4,
+                    29.75,
+                    29
                 )
             );
             players.AddLast(
                 new Player(
                     "Courtland Sutton",
-                    "",
+                    "courtland-sutton.jpg",
                     Teams.Dactyls,
                     "Broncos",
                     "WR",
                     7.00,
-                    0,
-                    0,
-                    0
+                    11,
+                    11.85,
+                    29
                 )
             );
             players.AddLast(
                 new Player(
                     "Justin Jefferson",
-                    "",
+                    "justin-jefferson.webp",
                     Teams.ODBs,
                     "Vikings",
                     "WR",
                     18.00,
-                    0,
-                    0,
-                    0
+                    2,
+                    15.67,
+                    26
                 )
             );
             players.AddLast(
                 new Player(
                     "Drake London",
-                    "",
+                    "drake-london.webp",
                     Teams.Ram,
                     "Falcons",
                     "WR",
                     8.74,
-                    0,
-                    0,
-                    0
+                    5,
+                    13.58,
+                    24
                 )
             );
             players.AddLast(
                 new Player(
                     "Kenneth Walker",
-                    "",
+                    "kenneth-walker.jpg",
                     Teams.Homelander,
                     "Seahawks",
                     "RB",
                     16.50,
-                    0,
-                    0,
-                    0
+                    28,
+                    14.38,
+                    24
                 )
             );
             players.AddLast(
                 new Player(
                     "Brock Bowers",
-                    "",
+                    "brock-bowers.jpg",
                     Teams.Power,
                     "Raiders",
                     "TE",
                     7.00,
-                    0,
-                    0,
-                    0
+                    1,
+                    12.16,
+                    22
                 )
             );
             players.AddLast(
                 new Player(
                     "De'Von Achane",
-                    "",
+                    "devon-achane.webp",
                     Teams.ODBs,
                     "Dolphins",
                     "RB",
                     8.79,
-                    0,
-                    0,
-                    0
+                    6,
+                    15.35,
+                    23
                 )
             );
             players.AddLast(
                 new Player(
                     "James Cook",
-                    "",
+                    "james-cook.webp",
                     Teams.Homelander,
                     "Bills",
                     "RB",
                     8.21,
-                    0,
-                    0,
-                    0
+                    8,
+                    15.67,
+                    25
                 )
             );
             players.AddLast(
                 new Player(
                     "George Kittle",
-                    "",
+                    "george-kittle.webp",
                     Teams.PigeonBoys,
                     "49ers",
                     "TE",
                     7.00,
-                    0,
-                    0,
-                    0
+                    2,
+                    13.17,
+                    31
                 )
             );
             players.AddLast(
                 new Player(
                     "Jayden Daniels",
-                    "",
+                    "jayden-daniels.webp",
                     Teams.Yellowstone,
                     "Commanders",
                     "QB",
                     14.38,
-                    0,
-                    0,
-                    0
+                    6,
+                    28.40,
+                    24
                 )
             );
             players.AddLast(
                 new Player(
                     "Ceedee Lamb",
-                    "",
+                    "ceedee-lamb.jpg",
                     Teams.StormDynasty,
                     "Cowboys",
                     "WR",
                     13.00,
-                    0,
-                    0,
-                    0
+                    8,
+                    14.20,
+                    26
                 )
             );
             players.AddLast(
                 new Player(
                     "Brian Thomas Jr.",
-                    "",
+                    "brian-thomas.webp",
                     Teams.PigeonBoys,
                     "Jaguars",
                     "WR",
                     7.00,
-                    0,
-                    0,
-                    0
+                    4,
+                    14.15,
+                    22
                 )
             );
             players.AddLast(
                 new Player(
                     "Nico Collins",
-                    "",
+                    "nico-collins.jpeg",
                     Teams.Power,
                     "Texans",
                     "WR",
                     7.80,
-                    0,
-                    0,
-                    0
+                    22,
+                    14.72,
+                    26
                 )
             );
             players.AddLast(
                 new Player(
                     "Bucky Irving",
-                    "",
+                    "bucky-irving.webp",
                     Teams.Benchwarmers,
                     "Buccaneers",
                     "RB",
                     7.00,
-                    0,
-                    0,
-                    0
+                    14,
+                    13.00,
+                    23
                 )
             );
             players.AddLast(
                 new Player(
                     "Jalen Hurts",
-                    "",
+                    "jalen-hurts.webp",
                     Teams.Ram,
                     "Eagles",
                     "QB",
                     25.00,
-                    0,
-                    0,
-                    0
+                    12,
+                    27.45,
+                    27
                 )
             );
             players.AddLast(
                 new Player(
                     "Joe Burrow",
-                    "",
+                    "joe-burrow.jpg",
                     Teams.Gorillas,
                     "Bengals",
                     "QB",
                     21.00,
-                    0,
-                    0,
-                    0
+                    2,
+                    32.77,
+                    28
                 )
             );
             players.AddLast(
                 new Player(
                     "Lamar Jackson",
-                    "",
+                    "lamar-jackson.avif",
                     Teams.Benchwarmers,
                     "Ravens",
                     "QB",
                     17.05,
-                    0,
-                    0,
-                    0
+                    1,
+                    33.90,
+                    28
                 )
             );
 
