@@ -1,5 +1,5 @@
-using server.Models;
 using Microsoft.AspNetCore.Mvc;
+using server.Models;
 
 namespace server.Controllers
 {
@@ -20,7 +20,7 @@ namespace server.Controllers
                 CreateBenchwarmers(),
                 CreateGorillas(),
                 CreatePower(),
-                CreateRam()
+                CreateRam(),
             };
             return Teams;
         }
@@ -143,7 +143,8 @@ namespace server.Controllers
 
         private static Team CreateTheHomelander()
         {
-            var players = new List<Player>() {
+            var players = new List<Player>()
+            {
                 new("Kenneth Walker III", 16.50, 1),
                 new("Ja'Marr Chase", 14.50, 2),
                 new("Tyreek Hill", 26.00, 1),
@@ -154,10 +155,7 @@ namespace server.Controllers
 
         private static Team CreatePigeonBoys()
         {
-            var players = new List<Player>
-            {
-                new("Kyle Pitts", 12.50, 2),
-            };
+            var players = new List<Player> { new("Kyle Pitts", 12.50, 2) };
 
             return new Team(Teams.PigeonBoys, 12.43, players);
         }
@@ -200,17 +198,15 @@ namespace server.Controllers
 
         private static Team CreateBenchwarmers()
         {
-            var players = new List<Player>
-            {
-                new("Derrick Henry", 31.00, 2),
-            };
+            var players = new List<Player> { new("Derrick Henry", 31.00, 2) };
 
             return new Team(Teams.Benchwarmers, 0, players);
         }
 
         private static Team CreateGorillas()
         {
-            var players = new List<Player> {
+            var players = new List<Player>
+            {
                 new("Joe Burrow", 21.00, 1),
                 new("Najee Harris", 8.21, 1),
                 new("Garrett Wilson", 20.50, 1),
@@ -233,10 +229,7 @@ namespace server.Controllers
 
         private static Team CreateRam()
         {
-            var players = new List<Player>
-            {
-                new("Jalen Hurts", 25.00, 1),
-            };
+            var players = new List<Player> { new("Jalen Hurts", 25.00, 1) };
 
             return new Team(Teams.Ram, 0, players);
         }

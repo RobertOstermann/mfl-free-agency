@@ -1,18 +1,11 @@
 namespace server.Models
 {
-    public class Message
+    public class Message(string team, string text, string recipient)
     {
-        public string Team { get; set; }
+        public string Team { get; set; } = team;
 
-        public string Text { get; set; }
+        public string Text { get; set; } = text;
 
-        public string Recipient { get; set; }
-
-        public Message(string team, string text, string recipient)
-        {
-            Team = team;
-            Text = text;
-            Recipient = recipient;
-        }
+        public string Recipient { get; set; } = recipient;
     }
 }

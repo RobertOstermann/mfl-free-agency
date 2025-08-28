@@ -1,12 +1,6 @@
 {
   "name": "mfl_manager",
   "version": "0.1.0",
-  "scripts": {
-    "install": "cd client && npm install",
-    "start": "cd server && dotnet run",
-    "watch": "cd server && dotnet watch run",
-    "build": "cd client && npm run build"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -18,5 +12,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "scripts": {
+    "install": "cd client && npm install",
+    "start": "cd server && dotnet run",
+    "watch": "cd server && dotnet watch run",
+    "build": "cd client && npm run build",
+    "format:client": "cd client && npm run format",
+    "format:server": "cd server && dotnet csharpier format ."
   }
 }

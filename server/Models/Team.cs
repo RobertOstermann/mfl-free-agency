@@ -8,10 +8,7 @@ namespace server.Models
 
         public double Salary
         {
-            get
-            {
-                return Players.Sum(p => p.Salary);
-            }
+            get { return Players.Sum(p => p.Salary); }
         }
 
         public double SalaryAdjustments { get; set; }
@@ -28,7 +25,7 @@ namespace server.Models
             Name = team;
             Id = team.Replace(' ', '-').Replace("'", "");
             SalaryAdjustments = 0;
-            Players = new List<Player>();
+            Players = [];
         }
 
         public Team(string team, double salaryAdjustments, List<Player> players)

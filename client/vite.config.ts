@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-ignore
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
-import fs from "fs";
 import type { PluginOption, UserConfigExport } from "vite";
 import { defineConfig, loadEnv } from "vite";
+import mkcert from "vite-plugin-mkcert";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const fullReloadAlways: PluginOption = {
@@ -24,12 +24,17 @@ export default defineConfig(({ command, mode }) => {
 
   let configuration: UserConfigExport = {
     plugins: [
-      react(),
+      mkcert(),
       tsconfigPaths(),
-      TanStackRouterVite({
+      tanstackRouter({
+        target: "react",
         routesDirectory: "./src/router/routes",
         generatedRouteTree: "./src/router/routeTree.gen.ts",
+        autoCodeSplitting: false,
+        semicolons: true,
+        quoteStyle: "double",
       }),
+      react(),
     ],
 
     test: {
@@ -58,19 +63,11 @@ export default defineConfig(({ command, mode }) => {
 
       preview: {
         ...configuration.server,
-        https: {
-          key: fs.readFileSync(env.SSL_KEY_FILE),
-          cert: fs.readFileSync(env.SSL_CRT_FILE),
-        },
         open: false,
       },
 
       server: {
         ...configuration.server,
-        https: {
-          key: fs.readFileSync(env.SSL_KEY_FILE),
-          cert: fs.readFileSync(env.SSL_CRT_FILE),
-        },
         open: "/",
       },
     };

@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
+using Microsoft.AspNetCore.Http.Connections.Features;
+using Microsoft.AspNetCore.SignalR;
 using server.Controllers;
 using server.Hubs.FreeAgency.Clients;
 using server.Models;
-using Microsoft.AspNetCore.Http.Connections.Features;
-using Microsoft.AspNetCore.SignalR;
 
 namespace server.Hubs.FreeAgency
 {
@@ -36,13 +36,17 @@ namespace server.Hubs.FreeAgency
 
         public async void GetCookie()
         {
-            string? teamName = Context.Features.Get<IHttpContextFeature>()?.HttpContext?.Request.Cookies["TeamCookie"];
+            string? teamName = Context
+                .Features.Get<IHttpContextFeature>()
+                ?.HttpContext?.Request.Cookies["TeamCookie"];
             if (!string.IsNullOrWhiteSpace(teamName))
             {
-                if (Connections.TryAdd(
-                    Context.ConnectionId,
-                    Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
-                ))
+                if (
+                    Connections.TryAdd(
+                        Context.ConnectionId,
+                        Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
+                    )
+                )
                 {
                     await Clients.Others.UpdateTeams();
                 }
@@ -85,14 +89,19 @@ namespace server.Hubs.FreeAgency
         {
             if (GetUserTeam() == null)
             {
-                if (Connections.TryAdd(
-                    Context.ConnectionId,
-                    Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
-                ))
+                if (
+                    Connections.TryAdd(
+                        Context.ConnectionId,
+                        Teams.FirstOrDefault(t => t.Name.Equals(teamName))!
+                    )
+                )
                 {
                     foreach (var connection in Connections)
                     {
-                        if (!connection.Key.Equals(Context.ConnectionId) && !connection.Value.Name.Equals(teamName))
+                        if (
+                            !connection.Key.Equals(Context.ConnectionId)
+                            && !connection.Value.Name.Equals(teamName)
+                        )
                         {
                             await Clients.Client(connection.Key).ReceiveSetTeam(teamName);
                         }
@@ -166,7 +175,10 @@ namespace server.Hubs.FreeAgency
                         {
                             await Clients.Caller.GrantFinalBidPermissions();
                         }
-                        else if (!string.IsNullOrWhiteSpace(player.OriginalRights) && team.Name.Equals(player.OriginalRights))
+                        else if (
+                            !string.IsNullOrWhiteSpace(player.OriginalRights)
+                            && team.Name.Equals(player.OriginalRights)
+                        )
                         {
                             await Clients.Caller.RevokeMatchPermissions(_contractYears);
                         }
@@ -175,7 +187,11 @@ namespace server.Hubs.FreeAgency
                             await Clients.Caller.RevokeBidPermissions();
                         }
                     }
-                    else if (player != null && !string.IsNullOrWhiteSpace(player.OriginalRights) && team.Name.Equals(player.OriginalRights))
+                    else if (
+                        player != null
+                        && !string.IsNullOrWhiteSpace(player.OriginalRights)
+                        && team.Name.Equals(player.OriginalRights)
+                    )
                     {
                         await Clients.Caller.RevokeMatchPermissions(_contractYears);
                     }
@@ -190,7 +206,12 @@ namespace server.Hubs.FreeAgency
                 }
                 else
                 {
-                    if (_matchInProgress && player != null && !string.IsNullOrWhiteSpace(player.OriginalRights) && team.Name.Equals(player.OriginalRights))
+                    if (
+                        _matchInProgress
+                        && player != null
+                        && !string.IsNullOrWhiteSpace(player.OriginalRights)
+                        && team.Name.Equals(player.OriginalRights)
+                    )
                     {
                         await Clients.Caller.GrantMatchPermissions(_contractYears);
                     }
@@ -311,7 +332,8 @@ namespace server.Hubs.FreeAgency
                         player.Salary = _leadBid;
                         player.MflTeam = "None";
                         player.ContractYears = _contractYears;
-                        string information = $"No bid was placed. {player.OriginalRights} has the option to sign the player.";
+                        string information =
+                            $"No bid was placed. {player.OriginalRights} has the option to sign the player.";
                         string footer = $"Player Update: {player.Name}";
                         Messages.Enqueue(new Message("Server-Everyone", information, footer));
                         await Clients.All.ReceiveMessageInformation(information, footer);
@@ -321,7 +343,8 @@ namespace server.Hubs.FreeAgency
                     else
                     {
                         player.Signed = true;
-                        string information = $"{_leadBidder} placing final bid and deciding contract years now.";
+                        string information =
+                            $"{_leadBidder} placing final bid and deciding contract years now.";
                         string footer = $"Player Update: {player.Name}";
                         Messages.Enqueue(new Message("Server-Everyone", information, footer));
                         await Clients.All.ReceiveMessageInformation(information, footer);
@@ -335,14 +358,24 @@ namespace server.Hubs.FreeAgency
         {
             Team team = GetUserTeam();
             var message = new Message(team.Name, text, recipient);
-            if (team != null && !string.IsNullOrWhiteSpace(recipient) &&
-                !string.IsNullOrWhiteSpace(text) && !team.Equals(recipient))
+            if (
+                team != null
+                && !string.IsNullOrWhiteSpace(recipient)
+                && !string.IsNullOrWhiteSpace(text)
+                && !team.Equals(recipient)
+            )
             {
                 Messages.Enqueue(message);
                 if (recipient.Equals("Everyone"))
                 {
-                    HashSet<string> senderIds = Connections.Where(x => x.Value.Equals(team)).Select(x => x.Key).ToHashSet();
-                    HashSet<string> recipientIds = Connections.Where(x => !x.Value.Equals(team)).Select(x => x.Key).ToHashSet();
+                    HashSet<string> senderIds = Connections
+                        .Where(x => x.Value.Equals(team))
+                        .Select(x => x.Key)
+                        .ToHashSet();
+                    HashSet<string> recipientIds = Connections
+                        .Where(x => !x.Value.Equals(team))
+                        .Select(x => x.Key)
+                        .ToHashSet();
                     foreach (string connectionId in senderIds)
                     {
                         await Clients.Client(connectionId).SendMessage(team.Name, text);
@@ -354,18 +387,25 @@ namespace server.Hubs.FreeAgency
                 }
                 else
                 {
-                    HashSet<string> senderIds = Connections.Where(x => x.Value.Equals(team)).Select(x => x.Key).ToHashSet();
-                    HashSet<string> recipientIds = Connections.Where(x => x.Value.Name.Equals(recipient)).Select(x => x.Key).ToHashSet();
+                    HashSet<string> senderIds = Connections
+                        .Where(x => x.Value.Equals(team))
+                        .Select(x => x.Key)
+                        .ToHashSet();
+                    HashSet<string> recipientIds = Connections
+                        .Where(x => x.Value.Name.Equals(recipient))
+                        .Select(x => x.Key)
+                        .ToHashSet();
                     foreach (string connectionId in senderIds)
                     {
-                        await Clients.Client(connectionId).SendMessageDirect($"{team.Name} to {recipient}", text);
+                        await Clients
+                            .Client(connectionId)
+                            .SendMessageDirect($"{team.Name} to {recipient}", text);
                     }
                     foreach (string connectionId in recipientIds)
                     {
                         await Clients.Client(connectionId).ReceiveMessageDirect(team.Name, text);
                     }
                 }
-
             }
         }
 
@@ -378,18 +418,26 @@ namespace server.Hubs.FreeAgency
                 {
                     if (message.Recipient.Equals("Everyone"))
                     {
-                        if (message.Team.Equals(team.Name)) await Clients.Caller.SendMessage(message.Team, message.Text);
-                        else await Clients.Caller.ReceiveMessage(message.Team, message.Text);
+                        if (message.Team.Equals(team.Name))
+                            await Clients.Caller.SendMessage(message.Team, message.Text);
+                        else
+                            await Clients.Caller.ReceiveMessage(message.Team, message.Text);
                     }
                     else if (message.Team.Equals("Server-Everyone"))
                     {
-                        await Clients.Caller.ReceiveMessageInformation(message.Text, message.Recipient);
+                        await Clients.Caller.ReceiveMessageInformation(
+                            message.Text,
+                            message.Recipient
+                        );
                     }
                     else
                     {
                         if (message.Team.Equals(team.Name))
                         {
-                            await Clients.Caller.SendMessageDirect($"{message.Team} to {message.Recipient}", message.Text);
+                            await Clients.Caller.SendMessageDirect(
+                                $"{message.Team} to {message.Recipient}",
+                                message.Text
+                            );
                         }
                         else if (message.Recipient.Equals(team.Name))
                         {
@@ -454,7 +502,10 @@ namespace server.Hubs.FreeAgency
                 var player = _node?.Value;
                 if (player != null)
                 {
-                    if (bid > _leadBid || (player.OriginalRights.Equals(_leadBidder) && bid >= _leadBid))
+                    if (
+                        bid > _leadBid
+                        || (player.OriginalRights.Equals(_leadBidder) && bid >= _leadBid)
+                    )
                     {
                         _leadBid = bid;
                         _leadBidder = team.Name;
@@ -484,8 +535,9 @@ namespace server.Hubs.FreeAgency
                         player.ContractYears = _contractYears;
                         player.Signed = true;
                         AddPlayerToTeam(player);
-                        string information = $"{_leadBidder} places a final bid of ${_leadBid:F} for {_contractYears} years. " +
-                            $"{player.OriginalRights} now has the option to match.";
+                        string information =
+                            $"{_leadBidder} places a final bid of ${_leadBid:F} for {_contractYears} years. "
+                            + $"{player.OriginalRights} now has the option to match.";
                         string footer = $"Player Update: {player.Name}";
                         Messages.Enqueue(new Message("Server-Everyone", information, footer));
                         await Clients.All.ReceiveMessageInformation(information, footer);
@@ -511,19 +563,22 @@ namespace server.Hubs.FreeAgency
                     {
                         _leadBidder = team.Name;
                         _contractYears = years;
-                        information = $"{player.OriginalRights} match. The final deal is {_leadBid:F} for {_contractYears} years.";
+                        information =
+                            $"{player.OriginalRights} match. The final deal is {_leadBid:F} for {_contractYears} years.";
                     }
                     else
                     {
                         if (player.Signed)
                         {
-                            information = $"{player.OriginalRights} does not match. {_leadBidder} secures the free agent. " +
-                                $"The final deal is {_leadBid:F} for {_contractYears} years.";
+                            information =
+                                $"{player.OriginalRights} does not match. {_leadBidder} secures the free agent. "
+                                + $"The final deal is {_leadBid:F} for {_contractYears} years.";
                         }
                         else
                         {
                             _leadBidder = "None";
-                            information = $"{player.OriginalRights} does not sign {player.Name}. He will return to the MFL draft";
+                            information =
+                                $"{player.OriginalRights} does not sign {player.Name}. He will return to the MFL draft";
                         }
                     }
 

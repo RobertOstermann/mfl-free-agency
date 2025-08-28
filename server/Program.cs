@@ -23,11 +23,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    app.UseCors(
-        cors => cors.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4000")
+    app.UseCors(cors =>
+        cors.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .WithOrigins("https://localhost:4000")
     );
 
-    ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, SslPolicyErrors) => true;
+    ServicePointManager.ServerCertificateValidationCallback += (
+        sender,
+        cert,
+        chain,
+        SslPolicyErrors
+    ) => true;
 }
 
 // Configure the HTTP request pipeline.
