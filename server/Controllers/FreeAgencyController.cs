@@ -334,6 +334,7 @@ namespace server.Controllers
             var players = new List<Player>
             {
                 new("Marvin Harrison Jr.", 9.51, 3),
+                new("Amon-Ra St. Brown", 19.00, 1),
             };
 
             return new Team(Teams.Gorillas, 0, players);
@@ -345,7 +346,6 @@ namespace server.Controllers
             {
                 new("Jahmyr Gibbs", 7.80, 2),
                 new("Breece Hall", 10.00, 2),
-                new("Amon-Ra St. Brown", 19.00, 1),
             };
 
             return new Team(Teams.Power, 4.20, players);
