@@ -1,15 +1,7 @@
-import { initTRPC } from "@trpc/server";
-import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
-import { getCounter, incrementCounter } from "@/server/routers/counter";
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const createTRPContext = ({ req, res }: CreateExpressContextOptions) => ({});
-
-type TRPCContext = Awaited<ReturnType<typeof createTRPContext>>;
-
-const t = initTRPC.context<TRPCContext>().create();
+import { createTRPContext, publicProcedure, router } from "@/server/context";
+import { counterRouter } from "@/server/routers/counter";
 
 const POSTS = [
   { id: "1", title: "First post" },
@@ -24,17 +16,14 @@ const POSTS = [
   { id: "10", title: "Tenth post" },
 ];
 
-export const appRouter = t.router({
-  hello: t.procedure.query(() => "Hello world!"),
-  counter: t.router({
-    get: t.procedure.query(() => getCounter()),
-    increment: t.procedure.mutation(() => incrementCounter()),
-  }),
-  posts: t.procedure.query(async () => {
+export const appRouter = router({
+  hello: publicProcedure.query(() => "Hello world!"),
+  counter: counterRouter,
+  posts: publicProcedure.query(async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return POSTS;
   }),
-  post: t.procedure.input(String).query(async (req) => {
+  post: publicProcedure.input(String).query(async (req) => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return POSTS.find((p) => p.id === req.input);
   }),

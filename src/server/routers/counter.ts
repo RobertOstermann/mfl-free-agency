@@ -1,4 +1,5 @@
 import { db } from "@/prisma/db";
+import { publicProcedure, router } from "@/server/context";
 
 /**
  * Identifier of the singleton counter row.
@@ -9,7 +10,7 @@ import { db } from "@/prisma/db";
 const COUNTER_ID = "app";
 
 /** Read the current counter value, treating a missing row as zero. */
-export async function getCounter() {
+async function getCounter() {
   const counter = await db.orm.public.Counter.select("value").first({
     id: COUNTER_ID,
   });
@@ -23,7 +24,7 @@ export async function getCounter() {
  * The read and the write share a transaction so two concurrent requests cannot
  * both read the same value and write the same increment.
  */
-export async function incrementCounter() {
+async function incrementCounter() {
   return db.transaction(async (tx) => {
     const counter = await tx.orm.public.Counter.select("value").first({
       id: COUNTER_ID,
@@ -45,3 +46,8 @@ export async function incrementCounter() {
     return updated?.value ?? counter.value + 1;
   });
 }
+
+export const counterRouter = router({
+  get: publicProcedure.query(() => getCounter()),
+  increment: publicProcedure.mutation(() => incrementCounter()),
+});

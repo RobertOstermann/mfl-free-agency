@@ -31,7 +31,7 @@
     "migration:log": "prisma migration log",
     "migration:plan": "prisma migration plan",
     "migration:status": "prisma migration status",
-    "start": "tsx ./src/server/server.ts",
+    "start": "tsx watch ./src/server/server.ts",
     "ts:check": "tsc --skipLibCheck --noEmit"
   },
   "dependencies": {
