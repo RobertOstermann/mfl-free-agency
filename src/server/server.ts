@@ -6,7 +6,6 @@ import readline from "node:readline";
 import url from "node:url";
 import type { ViteDevServer } from "vite";
 
-import { trpcMiddleWare } from "@/server/trpc";
 import { loadEnvironment } from "@/utilities/loadEnv";
 
 loadEnvironment();
@@ -24,6 +23,34 @@ const isTest = process.env.NODE_ENV === "test" || !!process.env.VITE_TEST_BUILD;
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+/** Module that exports the express-ready tRPC middleware. */
+const TRPC_MODULE = "/src/server/trpc.ts";
+
+type TrpcMiddleWare = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+) => void;
+
+/**
+ * Load the tRPC middleware through vite's SSR module graph.
+ *
+ * Going through vite rather than a static import means the module can be
+ * re-instantiated on demand, so editing a router does not require restarting
+ * the node process the vite dev server lives in.
+ *
+ * @param viteServer - The vite dev server owning the SSR module graph.
+ */
+async function loadTrpcMiddleWare(
+  viteServer: ViteDevServer,
+): Promise<TrpcMiddleWare> {
+  const loaded = (await viteServer.ssrLoadModule(TRPC_MODULE)) as {
+    trpcMiddleWare: TrpcMiddleWare;
+  };
+
+  return loaded.trpcMiddleWare;
+}
 
 type Shortcut = { action: () => Promise<void> | void; description: string };
 
@@ -105,8 +132,6 @@ export const createServer = async (
 ) => {
   const app = express();
 
-  app.use("/trpc", trpcMiddleWare);
-
   if (!isProd) {
     const vite = await import("vite");
     const viteServer = await vite.createServer({
@@ -125,6 +150,45 @@ export const createServer = async (
         },
       },
       appType: "custom",
+    });
+
+    // Load the tRPC middleware through vite's SSR module graph rather than
+    // importing it at the top of this file. The express app outlives every
+    // edit, so a change under src/server/ only invalidates the module here
+    // instead of restarting the process and tearing down the HMR socket that
+    // the browser is attached to.
+    //
+    // The load is deferred to the first request and cached. A module that
+    // throws while evaluating (a syntax error, a bad env var) then surfaces as
+    // a failed request rather than an unhandled rejection that takes the whole
+    // dev server down with it.
+    let trpcMiddleWarePromise: Promise<TrpcMiddleWare> | undefined;
+
+    viteServer.watcher.on("change", (file) => {
+      const changed = path.relative(root, file);
+      if (!changed.startsWith(path.join("src", "server"))) return;
+
+      // Drop the cached module so the next request re-evaluates it.
+      trpcMiddleWarePromise = undefined;
+      console.info(
+        chalk.dim(chalk.green("  ➜")) +
+          chalk.dim("  server reloaded ") +
+          chalk.dim(changed),
+      );
+    });
+
+    app.use("/trpc", (req, res, next) => {
+      trpcMiddleWarePromise ??= loadTrpcMiddleWare(viteServer);
+
+      trpcMiddleWarePromise.then(
+        (trpcMiddleWare) => trpcMiddleWare(req, res, next),
+        (e: unknown) => {
+          // Let the next request retry instead of caching the rejection.
+          trpcMiddleWarePromise = undefined;
+          if (e instanceof Error) viteServer.ssrFixStacktrace(e);
+          next(e);
+        },
+      );
     });
 
     // Use vite's connect instance as middleware
@@ -151,6 +215,10 @@ export const createServer = async (
 
     return { app };
   } else {
+    const { trpcMiddleWare } = await import("@/server/trpc");
+
+    app.use("/trpc", trpcMiddleWare);
+
     app.use(express.static(path.resolve(__dirname, "../client")));
 
     // Handle any requests that don't match an API route by serving the React app's index.html
