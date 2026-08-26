@@ -3,11 +3,9 @@ import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 
-import { Spinner } from "@/client/components/spinner";
+import { Spinner } from "@/client/components/Loader";
 import { routeTree } from "@/client/router/codegen/routeTree.gen";
 import type { AppRouter } from "@/server/trpc";
-
-// Import the generated route tree
 
 export const queryClient = new QueryClient();
 
@@ -28,14 +26,13 @@ export const trpc = createTRPCOptionsProxy<AppRouter>({
 export function createRouter() {
   const router = createTanStackRouter({
     routeTree,
-    scrollRestoration: true,
     defaultPreload: "intent",
     context: {
       trpc,
       queryClient,
     },
     defaultPendingComponent: () => (
-      <div className={`p-2 text-2xl`}>
+      <div className="p-2 text-2xl">
         <Spinner />
       </div>
     ),

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { trpc } from "@/router";
+import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/index")({
   loader: async ({ context: { trpc, queryClient } }) => {

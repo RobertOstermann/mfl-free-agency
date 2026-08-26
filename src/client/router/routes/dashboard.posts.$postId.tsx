@@ -3,9 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 
-import { trpc } from "@/router";
-
-import { Spinner } from "../../components/spinner";
+import { Spinner } from "@/client/components/Loader";
+import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/posts/$postId")({
   validateSearch: z.object({

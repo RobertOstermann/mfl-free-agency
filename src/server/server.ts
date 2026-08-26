@@ -102,7 +102,7 @@ export const createServer = async (
 ) => {
   const app = express();
 
-  app.use("/trpc", trpcMiddleWare as any);
+  app.use("/trpc", trpcMiddleWare);
 
   if (!isProd) {
     const vite = await import("vite");

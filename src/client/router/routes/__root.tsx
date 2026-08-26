@@ -9,7 +9,7 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 
-import { Spinner } from "@/client/components/spinner";
+import { Spinner } from "@/client/components/Loader";
 import type { AppRouter } from "@/server/trpc";
 
 export interface RouterAppContext {

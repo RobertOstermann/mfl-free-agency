@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   createFileRoute,
@@ -7,9 +6,8 @@ import {
   Outlet,
 } from "@tanstack/react-router";
 
-import { trpc } from "@/router";
-
-import { Spinner } from "@/client/components/spinner";
+import { Spinner } from "@/client/components/Loader";
+import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/posts")({
   errorComponent: () => "Oh crap!",
