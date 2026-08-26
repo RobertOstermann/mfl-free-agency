@@ -2,6 +2,8 @@ import { initTRPC } from "@trpc/server";
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
+import { getCounter, incrementCounter } from "@/server/routers/counter";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createTRPContext = ({ req, res }: CreateExpressContextOptions) => ({});
 
@@ -24,6 +26,10 @@ const POSTS = [
 
 export const appRouter = t.router({
   hello: t.procedure.query(() => "Hello world!"),
+  counter: t.router({
+    get: t.procedure.query(() => getCounter()),
+    increment: t.procedure.mutation(() => incrementCounter()),
+  }),
   posts: t.procedure.query(async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return POSTS;

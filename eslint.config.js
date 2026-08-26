@@ -10,7 +10,15 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
   eslint.configs.recommended,
-  globalIgnores(["node_modules", "scripts", "openapi-ts.config.ts"]),
+  globalIgnores([
+    ".claude",
+    "node_modules",
+    "scripts",
+    "openapi-ts.config.ts",
+    "src/prisma/codegen",
+    "src/prisma/contract.d.ts",
+    "src/prisma/contract.json",
+  ]),
   {
     extends: [baseConfig, tailwindConfig(), tanstackRouterConfig],
   },
@@ -58,9 +66,6 @@ export default defineConfig([
   // Rules for all ts files
   {
     files: ["**/*.ts", "**/*.tsx"],
-    plugins: {
-      "@typescript-eslint": tseslint,
-    },
     extends: [tseslint.configs.eslintRecommended, tseslint.configs.recommended],
     settings: {
       react: {
