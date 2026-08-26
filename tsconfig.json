@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "module": "es2020",
+    "module": "preserve",
     "target": "es2024",
     "lib": ["DOM", "DOM.Iterable", "ES2024"],
     "useDefineForClassFields": true,
@@ -46,6 +46,7 @@
     "src",
     "scripts/**/*.ts",
     "scripts/**/*.tsx",
+    "prisma.config.ts",
     "vite.config.ts",
     "tsup.config.ts"
   ],

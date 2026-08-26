@@ -1,0 +1,5 @@
+// prisma/schema.prisma
+model Counter {
+  id    String @id @default(uuid(7))
+  value Int
+}
