@@ -177,7 +177,7 @@ export const createServer = async (
       );
     });
 
-    app.use("/trpc", (req, res, next) => {
+    app.use("/api/trpc", (req, res, next) => {
       trpcMiddleWarePromise ??= loadTrpcMiddleWare(viteServer);
 
       trpcMiddleWarePromise.then(
@@ -217,7 +217,7 @@ export const createServer = async (
   } else {
     const { trpcMiddleWare } = await import("@/server/trpc");
 
-    app.use("/trpc", trpcMiddleWare);
+    app.use("/api/trpc", trpcMiddleWare);
 
     app.use(express.static(path.resolve(__dirname, "../client")));
 
