@@ -65,7 +65,7 @@ export default defineConfig((configEnv) => {
         },
         semicolons: true,
         quoteStyle: "double",
-        tmpDir: "./src/router/codegen/.tanstack",
+        tmpDir: "./src/client/router/codegen/.tanstack",
       }),
       viteReact({ compiler: true }),
       envCaster({
