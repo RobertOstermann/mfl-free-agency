@@ -25,13 +25,13 @@ async function getCounter() {
  * both read the same value and write the same increment.
  */
 async function incrementCounter() {
-  return db.transaction(async (tx) => {
-    const counter = await tx.orm.public.Counter.select("value").first({
+  return db.transaction(async (context) => {
+    const counter = await context.orm.public.Counter.select("value").first({
       id: COUNTER_ID,
     });
 
     if (!counter) {
-      const created = await tx.orm.public.Counter.select("value").create({
+      const created = await context.orm.public.Counter.select("value").create({
         id: COUNTER_ID,
         value: 1,
       });
@@ -39,7 +39,7 @@ async function incrementCounter() {
       return created.value;
     }
 
-    const updated = await tx.orm.public.Counter.where({ id: COUNTER_ID })
+    const updated = await context.orm.public.Counter.where({ id: COUNTER_ID })
       .select("value")
       .update({ value: counter.value + 1 });
 
