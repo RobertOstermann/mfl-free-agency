@@ -8,5 +8,5 @@ loadEnvironment();
 
 export const db = postgres<Contract>({
   contractJson,
-  url: process.env["DATABASE_URL"]!,
+  url: process.env["DATABASE_URL"],
 });
