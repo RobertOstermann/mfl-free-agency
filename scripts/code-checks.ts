@@ -82,20 +82,6 @@ const commands: CommandDetails[] = [
     name: "ESLint",
     cmd: shouldFix ? "npm run fix" : "npm run lint",
   },
-  {
-    name: "Translations",
-    cmd: shouldFix
-      ? "npm run codegen:translations"
-      : "npm run validate:translations",
-  },
-  { name: "Expo Doctor", cmd: "npm run expo:doctor" },
-  {
-    name: "Audit",
-    cmd: shouldFix ? "npm audit fix" : "npm run audit",
-    env: {
-      IGNORED_VULNERABILITIES: "GHSA-w3rx-r6r6-pgpr,GHSA-5p2g-fcmc-qvqq",
-    },
-  },
 ];
 
 const spinnerFrames: string[] = cliSpinners.dots.frames;

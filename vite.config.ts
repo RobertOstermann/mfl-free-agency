@@ -42,6 +42,11 @@ export default defineConfig((configEnv) => {
     resolve: {
       tsconfigPaths: true,
     },
+    define: {
+      "import.meta.env.VITE_BUILD_DATE": JSON.stringify(
+        new Date().toISOString(),
+      ),
+    },
     plugins: [
       tailwindcss(),
       tanstackRouter({
