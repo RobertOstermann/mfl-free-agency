@@ -7,6 +7,9 @@ import url from "node:url";
 import type { ViteDevServer } from "vite";
 
 import { trpcMiddleWare } from "@/server/trpc";
+import { loadEnvironment } from "@/utilities/loadEnv";
+
+loadEnvironment();
 
 const PORT =
   typeof process.env.PORT !== "undefined"
