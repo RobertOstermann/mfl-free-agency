@@ -1,94 +1,39 @@
-# Ignore Everything
-# *
-# Except the ReadMe
-# !ReadMe.md
-# !.gitignore
-
-./vscode
-./vs
-.env
-package-lock.json
-
-.vscode/command_variables.json
-
 ##################################################
-##################### client #####################
+#################### general #####################
 ##################################################
 
 # dependencies
-/client/node_modules
-/client/.pnp
-/client/.pnp.js
+node_modules
+.pnp
+.pnp.js
+
+# lock files
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
 
 # testing
-/client/coverage
+coverage
 
 # production
-/client/build
-/client/dist
+build
+dist
+.nitro
+.output
+
+# environment
+.env.development
+*.local
+
+# tanstack
+.tanstack
 
 # misc
-/client/.DS_Store
-/client/.env.local
-/client/.env.development.local
-/client/.env.test.local
-/client/.env.production.local
-/client/.vs
+.DS_Store
+.vs
+public/.DS_Store
 
 client/dev-dist
-/client/npm-debug.log*
-/client/package-lock.json
-/client/yarn-debug.log*
-/client/yarn-error.log*
-
-##################################################
-##################### server #####################
-##################################################
-
-# User-specific files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# User-specific files (MonoDevelop/Xamarin Studio)
-*.userprefs
-
-/temp
-
-# Build results
-/server/[Dd]ebug/
-/server/[Dd]ebugPublic/
-/server/[Rr]elease/
-/server/[Rr]eleases/
-/server/x64/
-/server/x86/
-/server/build/
-/server/bld/
-/server/bin/
-/server/Bin/
-/server/obj/
-/server/Obj/
-
-# Visual Studio 2015 cache/options directory
-/server/.vs/
-/server/wwwroot/dist/
-
-# NUNIT
-*.VisualState.xml
-/server/TestResult.xml
-
-# misc
-/server/appsettings.local.*
-/server/.env.local
-/server/.env.development.local
-/server/.env.test.local
-/server/.env.production.local
-
-# server logs
-/server/logs
-
-##################################################
-#################### database ####################
-##################################################
-/server/.database/*.bacpac
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

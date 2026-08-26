@@ -1,24 +1,73 @@
 {
-  "name": "mfl_manager",
-  "version": "0.1.0",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "name": "mfl-free-agency",
+  "version": "0.0.1",
+  "private": true,
+  "description": "mfl-free-agency",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Robert Ostermann",
+    "email": "robertostermann5@gmail.com",
+    "url": "https://github.com/RobertOstermann"
   },
+  "type": "module",
   "scripts": {
-    "install": "cd client && npm install",
-    "start": "cd server && dotnet run",
-    "watch": "cd server && dotnet watch run",
-    "build": "cd client && npm run build",
-    "format:client": "cd client && npm run format",
-    "format:server": "cd server && dotnet csharpier format ."
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "vite build && tsc --noEmit",
+    "build:server": "vite build --mode server",
+    "fix": "eslint . --fix",
+    "lint": "eslint .",
+    "start": "npx tsx ./src/server/server.ts --watch",
+    "ts:check": "tsc --skipLibCheck --noEmit"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-query": "^5.102.5",
+    "@tanstack/react-query-devtools": "^5.102.5",
+    "@tanstack/react-router": "^1.170.32",
+    "@tanstack/react-router-devtools": "^1.167.1",
+    "@tanstack/router-plugin": "^1.168.35",
+    "@trpc/client": "^11.18.0",
+    "@trpc/server": "^11.18.0",
+    "@trpc/tanstack-react-query": "^11.18.0",
+    "camelcase": "9.0.0",
+    "express": "^5.2.1",
+    "prettier": "3.9.6",
+    "prettier-plugin-jsdoc": "1.8.1",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@inquirer/prompts": "8.6.0",
+    "@niku/vite-env-caster": "1.2.0",
+    "@ostermann/eslint-config": "0.0.10",
+    "@ostermann/prettier-config": "0.0.4",
+    "@types/express": "^5.0.6",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@vitejs/plugin-react": "^6.1.0",
+    "cli-spinners": "3.4.0",
+    "commander": "15.0.0",
+    "eslint": "9.39.5",
+    "eslint-import-resolver-typescript": "4.4.5",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-import-newlines": "1.4.1",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.5",
+    "eslint-plugin-simple-import-sort": "14.0.0",
+    "eslint-plugin-tsdoc": "0.5.2",
+    "eslint-plugin-unused-imports": "4.4.1",
+    "oxc-transform-react": "0.145.0",
+    "readline": "1.3.0",
+    "ts-plugin-sort-import-suggestions": "1.0.4",
+    "tsx": "^4.23.12",
+    "typescript": "6.0.3",
+    "vite": "^8.2.2",
+    "vite-plugin-svgr": "5.2.0"
   }
 }

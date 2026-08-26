@@ -1,72 +1,97 @@
 {
-    "files.trimFinalNewlines": true,
-
-    "search.exclude": {
-      "**/node_modules": true,
-      "**/bower_components": true,
-      "**/*.code-search": true,
-      "**/Migrations": true,
-    },
-
-    /* Extensions */
-
-    "commandvariable.remember.persistent.file": "${workspaceFolder}${pathSeparator}.vscode${pathSeparator}command_variables.json",
-
-    // Azure
-    "appService.preDeployTask": "dotnet publish-release",
-    "appService.deploySubpath": "server\\bin\\Release\\net7.0\\publish",
-    "appService.defaultWebAppToDeploy": "/subscriptions/964cf311-5944-40d7-b3c8-961f15a52243/resourceGroups/Azure-Resources/providers/Microsoft.Web/sites/mfl-freeagency",
-    // C#
-    "dotnet.defaultSolution": "server/server.sln",
-    // ESLint
-    "eslint.workingDirectories": ["./client"],
-    // Path AutoComplete
-    "path-autocomplete.extensionOnImport": true,
-    "path-autocomplete.pathMappings": {
-      "components": "${workspace}/client/src/components",
-      "styles": "${workspace}/client/src/styles"
-    },
-    // We only need scss suggestions
-    "path-autocomplete.excludedItems": {
-      // Ignore typescript/javascript suggestions
-      "**/*{.ts,.tsx,.js,.jsx}": { "when": "**" },
-      // Ignore folder suggestions
-      "**": { "when": "**", "isDir": true },
-    },
-
-    /* File Types */
-
-    // Javascript
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-      "editor.tabSize": 2
-    },
-    // Javascript React
-    "[javascriptreact]": {
-      "editor.tabSize": 2
-    },
-    // Typescript
-    "vsintellicode.typescript.completionsEnabled": true,
-    "typescript.format.semicolons": "insert",
-    "typescript.preferences.importModuleSpecifier": "non-relative",
-    "typescript.preferences.includePackageJsonAutoImports": "on",
-    "typescript.preferences.quoteStyle": "double",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "[typescript]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[typescriptreact]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    // CSS
-    "css.completion.completePropertyWithSemicolon": true,
-    // LESS
-    "less.completion.completePropertyWithSemicolon": true,
-    // SCSS
-    "scss.completion.completePropertyWithSemicolon": true,
-    "[scss]": {
-      "editor.tabSize": 2
-    }
+  /* Editor */
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  /* Explorer */
+  "explorer.fileNesting.patterns": {
+    "eslint.config.js": "prettier.config.js, .prettierignore",
+    "eslint.config.ts": "prettier.config.js, .prettierignore",
+    "tsconfig.json": ".editorconfig, app.config.ts, app.json, babel.config.ts, eas.json, expo-env.d.ts, metro.config.cjs, nativewind-env.d.ts, tailwind.config.js, *.p8, google-service-account-key.json",
+    "README.md": "CHANGELOG.md"
+  },
+  /* Files */
+  "files.associations": {
+    ".prettierrc": "jsonc",
+    "*.env": "properties",
+    ".env.*": "properties",
+    "*.css": "tailwindcss"
+  },
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true,
+    "src/**/codegen/**/*": true
+  },
+  /* Search */
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/Migrations": true,
+    "src/**/codegen/**/*": true
+  },
+  "search.useIgnoreFiles": false,
+  /* Workbench */
+  "workbench.editor.customLabels.enabled": true,
+  "workbench.editor.customLabels.patterns": {
+    // Expo Router
+    "**/app/**/index.tsx": "${dirname}/index.tsx",
+    "**/app/**/_layout.tsx": "${dirname}/_layout.tsx",
+    // TanStack Router: default configuration
+    "**/routes/**/route.tsx": "${dirname}/route.tsx",
+    "**/routes/**/index.tsx": "${dirname}/index.tsx",
+    // TanStack Router: custom configuration
+    "**/routes/**/+layout.tsx": "${dirname}/+layout.tsx",
+    "**/routes/**/+page.tsx": "${dirname}/+page.tsx"
+  },
+  /* Extensions */
+  // Path AutoComplete
+  "path-autocomplete.extensionOnImport": true,
+  // Tailwind CSS
+  "tailwindCSS.experimental.classRegex": [
+    // https://github.com/paolotiu/tailwind-intellisense-regex-list?tab=readme-ov-file#tailwind-variants
+    ["tv\\(([^;]*)\\;", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"],
+    // https://github.com/tailwindlabs/tailwindcss-intellisense/issues/1032#issuecomment-2575812786
+    ["(?<=cva\\([\\s\\S]*?)[\"']([^\"']+)[\"']"],
+    // https://github.com/paolotiu/tailwind-intellisense-regex-list?tab=readme-ov-file#string-endings-most-useful
+    ["\\b\\w*ClassName\\b\\s*(?:=|:)\\s*[\"'`]([^\"'`]*)[\"'`]"],
+    ["\\b\\w*ClassNames\\b\\s*(?:=|:)\\s*[\"'`]([^\"'`]*)[\"'`]"],
+    ["className\\s*:\\s*[\"'`]([^\"'`]*)[\"'`]"],
+    // cn("className")
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"],
+    // className={""}
+    ["[cC]lass[nN]ame={([^}]*)", "[\"'`]([^\"'`]*)[\"'`]"],
+    // useResolveClassNames("className")
+    ["useResolveClassNames\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"]
+  ],
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+  /* File Types */
+  // Javascript
+  "[javascript]": {
+    "editor.defaultColorDecorators": "always"
+  },
+  // Typescript
+  "[typescript]": {
+    "editor.defaultColorDecorators": "always"
+  },
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.format.semicolons": "insert",
+  // - Exclude from import suggestions. These imports should only be used in specific components
+  "js/ts.preferences.autoImportSpecifierExcludeRegexes": [
+    "@radix-ui/*",
+    "cmdk",
+    "node:process",
+    "process",
+    "ramda",
+    "tailwind-variants/lite",
+    "zod/mini",
+    "zod/v3",
+    "zod/v4-mini",
+    "zod/v4"
+  ],
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "js/ts.preferences.includePackageJsonAutoImports": "on",
+  "js/ts.preferences.quoteStyle": "double",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  /* Other */
+  "git.branchPrefix": "feature/",
+  "npm.packageManager": "npm"
 }

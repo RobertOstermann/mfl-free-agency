@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    // EditorConfig for VS Code
+    "editorconfig.editorconfig",
+    // ESLint
+    "dbaeumer.vscode-eslint",
+    // Tailwind CSS IntelliSense
+    "bradlc.vscode-tailwindcss"
+  ]
+}

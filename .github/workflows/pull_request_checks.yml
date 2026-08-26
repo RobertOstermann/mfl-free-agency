@@ -1,0 +1,30 @@
+name: 🚧 Code Quality
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+on: pull_request
+
+jobs:
+  checks:
+    name: Code Checks
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - uses: actions/checkout@v4
+
+      # Setup
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # Checks
+      - name: TypeScript Check
+        run: npm run ts:check
+
+      - name: ESLint Check
+        run: npm run lint
