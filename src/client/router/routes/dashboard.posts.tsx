@@ -6,13 +6,16 @@ import {
   Outlet,
 } from "@tanstack/react-router";
 
-import { Spinner } from "@/client/components/Loader";
+import { Spinner } from "@/client/components/Spinner";
 import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/posts")({
   errorComponent: () => "Oh crap!",
   loader: async ({ context: { trpc, queryClient } }) => {
-    await queryClient.ensureQueryData(trpc.posts.queryOptions());
+    await queryClient.query({
+      ...trpc.posts.queryOptions(),
+      staleTime: "static",
+    });
     return;
   },
   pendingComponent: Spinner,

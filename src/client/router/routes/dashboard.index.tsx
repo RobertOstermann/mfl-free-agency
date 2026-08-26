@@ -5,7 +5,10 @@ import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/index")({
   loader: async ({ context: { trpc, queryClient } }) => {
-    await queryClient.ensureQueryData(trpc.posts.queryOptions());
+    await queryClient.query({
+      ...trpc.posts.queryOptions(),
+      staleTime: "static",
+    });
     return;
   },
   component: DashboardIndexComponent,

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 
-import { Spinner } from "@/client/components/Loader";
+import { Spinner } from "@/client/components/Spinner";
 import { trpc } from "@/client/router/router";
 
 export const Route = createFileRoute("/dashboard/posts/$postId")({
@@ -12,7 +12,10 @@ export const Route = createFileRoute("/dashboard/posts/$postId")({
     notes: z.string().optional(),
   }),
   loader: async ({ context: { trpc, queryClient }, params: { postId } }) => {
-    await queryClient.ensureQueryData(trpc.post.queryOptions(postId));
+    await queryClient.query({
+      ...trpc.post.queryOptions(postId),
+      staleTime: "static",
+    });
   },
   pendingComponent: Spinner,
   component: DashboardPostsPostIdComponent,

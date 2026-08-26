@@ -3,7 +3,7 @@ import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 
-import { Spinner } from "@/client/components/Loader";
+import { Spinner } from "@/client/components/Spinner";
 import { routeTree } from "@/client/router/codegen/routeTree.gen";
 import type { AppRouter } from "@/server/trpc";
 

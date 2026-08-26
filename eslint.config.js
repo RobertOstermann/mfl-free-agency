@@ -1,8 +1,8 @@
 import eslint from "@eslint/js";
 import {
   baseConfig,
-  tanstackRouterConfig,
   tailwindConfig,
+  tanstackRouterConfig,
 } from "@ostermann/eslint-config";
 import { defineConfig, globalIgnores } from "eslint/config";
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
@@ -20,30 +20,8 @@ export default defineConfig([
     plugins: {
       "simple-import-sort": simpleImportSortPlugin,
     },
-    extends: [tseslint.configs.eslintRecommended, tseslint.configs.recommended],
-    settings: {
-      react: {
-        version: "detect",
-      },
-      "better-tailwindcss": {
-        entryPoint: "src/global.css",
-      },
-      "import/resolver": {
-        typescript: {},
-      },
-      "import/parsers": {
-        "@typescript-eslint/parser": [".ts", ".tsx"],
-      },
-    },
     languageOptions: {
       sourceType: "module",
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
     rules: {
       // no-relative-import-paths
@@ -75,6 +53,37 @@ export default defineConfig([
           patterns: ["@mui/*/*/*"],
         },
       ],
+    },
+  },
+  // Rules for all ts files
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    plugins: {
+      "@typescript-eslint": tseslint,
+    },
+    extends: [tseslint.configs.eslintRecommended, tseslint.configs.recommended],
+    settings: {
+      react: {
+        version: "detect",
+      },
+      "import/resolver": {
+        typescript: {},
+      },
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"],
+      },
+    },
+    languageOptions: {
+      sourceType: "module",
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    rules: {
       // typescript-eslint
       "@typescript-eslint/no-deprecated": "error",
     },
