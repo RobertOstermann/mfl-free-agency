@@ -46,6 +46,11 @@
   /* Extensions */
   // Path AutoComplete
   "path-autocomplete.extensionOnImport": true,
+  // Prisma
+  "prisma.hidePrisma6Prompts": true,
+  "prisma.scriptRunner": "npx",
+  "prisma.schemaPath": "/src/prisma/contract.prisma",
+  "prisma.enableDiagnostics": false,
   // Tailwind CSS
   "tailwindCSS.experimental.classRegex": [
     // https://github.com/paolotiu/tailwind-intellisense-regex-list?tab=readme-ov-file#tailwind-variants
