@@ -47,10 +47,33 @@ namespace server.Controllers
             }
         }
 
+        [HttpGet("players")]
+        public string GetPlayers()
+        {
+            try
+            {
+                Task<string> players = Players();
+                return players.Result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         private async Task<string> Roster()
         {
             var year = DateTime.Now.Year;
             var url = $"{baseURL}/{year}/export?TYPE=rosters&L={leagueId}&JSON=1";
+            var response = await client.GetStringAsync(url);
+
+            return response;
+        }
+
+        private async Task<string> Players()
+        {
+            var year = DateTime.Now.Year;
+            var url = $"{baseURL}/{year}/export?TYPE=players&L={leagueId}&JSON=1";
             var response = await client.GetStringAsync(url);
 
             return response;
