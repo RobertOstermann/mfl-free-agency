@@ -31,236 +31,184 @@ namespace server.Controllers
 
             players.AddLast(
                 new Player(
-                    "Ladd McConkey",
-                    "ladd-mcconkey.jpg",
-                    Teams.Gorillas,
-                    "Chargers",
-                    "WR",
-                    7.00,
-                    13,
-                    12.49,
-                    23
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Josh Allen",
-                    "josh-allen.webp",
-                    Teams.ODBs,
-                    "Bills",
-                    "QB",
-                    24.00,
-                    4,
-                    29.75,
-                    29
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Courtland Sutton",
-                    "courtland-sutton.jpg",
-                    Teams.Dactyls,
+                    "Jaylen Waddle",
+                    "jaylen-waddle.jpg",
+                    Teams.Ram,
                     "Broncos",
                     "WR",
-                    7.00,
-                    11,
-                    11.85,
-                    29
+                    7.23,
+                    22,
+                    10.15,
+                    27
                 )
             );
             players.AddLast(
                 new Player(
-                    "Justin Jefferson",
-                    "justin-jefferson.webp",
-                    Teams.ODBs,
-                    "Vikings",
+                    "Ja'Marr Chase",
+                    "jamarr-chase.jpeg",
+                    Teams.Homelander,
+                    "Bengals",
                     "WR",
-                    18.00,
-                    2,
-                    15.67,
+                    14.50,
+                    4,
+                    16.74,
                     26
                 )
             );
             players.AddLast(
                 new Player(
-                    "Drake London",
-                    "drake-london.webp",
-                    Teams.Ram,
-                    "Falcons",
+                    "Amon-Ra St. Brown",
+                    "amon-ra-st-brown.jpg",
+                    Teams.Dactyls,
+                    "Lions",
                     "WR",
-                    8.74,
-                    5,
-                    13.58,
-                    24
+                    19.00,
+                    3,
+                    16.59,
+                    26
                 )
             );
             players.AddLast(
                 new Player(
-                    "Kenneth Walker",
-                    "kenneth-walker.jpg",
-                    Teams.Homelander,
-                    "Seahawks",
+                    "Javonte Williams",
+                    "javonte-williams.jpg",
+                    Teams.Gorillas,
+                    "Cowboys",
                     "RB",
-                    16.50,
-                    28,
-                    14.38,
-                    24
+                    7.00,
+                    11,
+                    14.08,
+                    26
                 )
             );
             players.AddLast(
                 new Player(
-                    "Brock Bowers",
-                    "brock-bowers.jpg",
-                    Teams.Power,
-                    "Raiders",
-                    "TE",
+                    "Quinshon Judkins",
+                    "quinshon-judkins.jpeg",
+                    Teams.Homelander,
+                    "Browns",
+                    "RB",
                     7.00,
-                    1,
-                    12.16,
+                    26,
+                    11.20,
                     22
                 )
             );
             players.AddLast(
                 new Player(
-                    "De'Von Achane",
-                    "devon-achane.webp",
+                    "George Pickens",
+                    "george-pickens.webp",
                     Teams.ODBs,
-                    "Dolphins",
-                    "RB",
-                    8.79,
-                    6,
-                    15.35,
-                    23
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "James Cook",
-                    "james-cook.webp",
-                    Teams.Homelander,
-                    "Bills",
-                    "RB",
-                    8.21,
-                    8,
-                    15.67,
+                    "Cowboys",
+                    "WR",
+                    7.13,
+                    5,
+                    15.34,
                     25
                 )
             );
             players.AddLast(
                 new Player(
-                    "George Kittle",
-                    "george-kittle.webp",
-                    Teams.PigeonBoys,
-                    "49ers",
-                    "TE",
-                    7.00,
-                    2,
-                    13.17,
-                    31
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Jayden Daniels",
-                    "jayden-daniels.webp",
-                    Teams.Yellowstone,
-                    "Commanders",
-                    "QB",
-                    14.38,
-                    6,
-                    28.40,
-                    24
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Ceedee Lamb",
-                    "ceedee-lamb.jpg",
-                    Teams.StormDynasty,
-                    "Cowboys",
-                    "WR",
-                    13.00,
-                    8,
-                    14.20,
-                    26
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Brian Thomas Jr.",
-                    "brian-thomas.webp",
-                    Teams.PigeonBoys,
-                    "Jaguars",
-                    "WR",
-                    7.00,
-                    4,
-                    14.15,
-                    22
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Nico Collins",
-                    "nico-collins.jpeg",
+                    "Drake Maye",
+                    "drake-maye.webp",
                     Teams.Power,
-                    "Texans",
-                    "WR",
-                    7.80,
-                    22,
-                    14.72,
-                    26
-                )
-            );
-            players.AddLast(
-                new Player(
-                    "Bucky Irving",
-                    "bucky-irving.webp",
-                    Teams.Benchwarmers,
-                    "Buccaneers",
-                    "RB",
-                    7.00,
-                    14,
-                    13.00,
+                    "Patriots",
+                    "QB",
+                    13.77,
+                    2,
+                    31.07,
                     23
                 )
             );
             players.AddLast(
                 new Player(
-                    "Jalen Hurts",
-                    "jalen-hurts.webp",
+                    "Christian McCaffrey",
+                    "christian-mccaffrey.jpg",
                     Teams.Ram,
-                    "Eagles",
-                    "QB",
-                    25.00,
-                    12,
-                    27.45,
-                    27
+                    "49ers",
+                    "RB",
+                    35.50,
+                    1,
+                    22.85,
+                    30
+                )
+            );
+            players.AddLast(
+                new Player(
+                    "Chase Brown",
+                    "chase-brown.webp",
+                    Teams.Gorillas,
+                    "Bengals",
+                    "RB",
+                    8.55,
+                    8,
+                    15.51,
+                    26
+                )
+            );
+            players.AddLast(
+                new Player(
+                    "Tyler Warren",
+                    "tyler-warren.jpg",
+                    Teams.ODBs,
+                    "Colts",
+                    "TE",
+                    7.00,
+                    5,
+                    9.41,
+                    24
+                )
+            );
+            players.AddLast(
+                new Player(
+                    "Derrick Henry",
+                    "derrick-henry.jpeg",
+                    Teams.Benchwarmers,
+                    "Ravens",
+                    "RB",
+                    31.00,
+                    7,
+                    17.00,
+                    32
                 )
             );
             players.AddLast(
                 new Player(
                     "Joe Burrow",
                     "joe-burrow.jpg",
-                    Teams.Gorillas,
+                    Teams.StormDynasty,
                     "Bengals",
                     "QB",
-                    21.00,
-                    2,
-                    32.77,
-                    28
+                    16.50,
+                    29,
+                    29.16,
+                    29
                 )
             );
             players.AddLast(
                 new Player(
-                    "Lamar Jackson",
-                    "lamar-jackson.jpg",
+                    "Trey McBride",
+                    "trey-mcbride.jpeg",
                     Teams.Benchwarmers,
-                    "Ravens",
-                    "QB",
-                    17.05,
+                    "Cardinals",
+                    "TE",
+                    7.06,
                     1,
-                    33.90,
-                    28
+                    15.81,
+                    26
+                )
+            );
+            players.AddLast(
+                new Player(
+                    "Saquon Barkley",
+                    "saquon-barkley.jpg",
+                    Teams.Dactyls,
+                    "Eagles",
+                    "RB",
+                    22.00,
+                    14,
+                    13.36,
+                    29
                 )
             );
 
@@ -271,49 +219,67 @@ namespace server.Controllers
         {
             var players = new List<Player>
             {
-                new("Jonathan Taylor", 22.00, 1),
-                new("Sam LaPorta", 14.00, 1),
+                new("Bucky Irving", 16.00, 2),
+                new("Omarion Hampton", 8.21, 2),
             };
 
-            return new Team(Teams.Yellowstone, 0, players);
+            return new Team(Teams.Yellowstone, 3.99, players);
         }
 
         private static Team CreateTheHomelander()
         {
-            var players = new List<Player>() { new("Ja'Marr Chase", 14.50, 1) };
+            var players = new List<Player>
+            {
+                new("James Cook", 11.00, 2),
+                new("Travis Hunter", 7.00, 3),
+            };
 
-            return new Team(Teams.Homelander, 4.03, players);
+            return new Team(Teams.Homelander, 0, players);
         }
 
         private static Team CreatePigeonBoys()
         {
-            var players = new List<Player>();
+            var players = new List<Player>
+            {
+                new("Brian Thomas Jr.", 15.00, 3),
+                new("Ashton Jeanty", 11.02, 2),
+                new("Emeka Egbuka", 7.00, 3),
+            };
 
-            return new Team(Teams.PigeonBoys, 4.38, players);
+            return new Team(Teams.PigeonBoys, 3.15, players);
         }
 
         private static Team CreateDactyls()
         {
             var players = new List<Player>
             {
-                new("Bo Nix", 7.23, 3),
-                new("Bijan Robinson", 12.60, 2),
-                new("Saquon Barkley", 22.00, 1),
+                new("Bijan Robinson", 12.60, 1),
+                new("Bo Nix", 7.23, 2),
             };
 
-            return new Team(Teams.Dactyls, 0, players);
+            return new Team(Teams.Dactyls, 2.45, players);
         }
 
         private static Team CreateODBs()
         {
-            var players = new List<Player> { new("Josh Jacobs", 13.50, 1) };
+            var players = new List<Player>
+            {
+                new("De'Von Achane", 20.50, 2),
+                new("Ladd McConkey", 9.00, 3),
+                new("Jaxon Smith-Njigba", 8.22, 3),
+            };
 
             return new Team(Teams.ODBs, 4.38, players);
         }
 
         private static Team CreateStormDynasty()
         {
-            var players = new List<Player> { new("Malik Nabers", 7.00, 2) };
+            var players = new List<Player>
+            {
+                new("CeeDee Lamb", 23.50, 2),
+                new("Jayden Daniels", 22.00, 3),
+                new("Malik Nabers", 7.00, 1),
+            };
 
             return new Team(Teams.StormDynasty, 0, players);
         }
@@ -322,8 +288,9 @@ namespace server.Controllers
         {
             var players = new List<Player>
             {
-                new("Derrick Henry", 31.00, 1),
-                new("Puka Nacua", 10.00, 2),
+                new("Lamar Jackson", 19.00, 3),
+                new("Puka Nacua", 10.00, 1),
+                new("RJ Harvey", 7.00, 3),
             };
 
             return new Team(Teams.Benchwarmers, 0, players);
@@ -333,30 +300,32 @@ namespace server.Controllers
         {
             var players = new List<Player>
             {
-                new("Marvin Harrison Jr.", 9.51, 3),
-                new("Amon-Ra St. Brown", 19.00, 1),
+                new("Josh Allen", 25.00, 2),
+                new("Nico Collins", 18.00, 2),
             };
 
-            return new Team(Teams.Gorillas, 0, players);
+            return new Team(Teams.Gorillas, 3.33, players);
         }
 
         private static Team CreatePower()
         {
             var players = new List<Player>
             {
-                new("Jahmyr Gibbs", 7.80, 2),
-                new("Breece Hall", 10.00, 2),
+                new("Justin Jefferson", 25.00, 2),
+                new("Brock Bowers", 19.00, 2),
+                new("Breece Hall", 10.00, 1),
+                new("Jahmyr Gibbs", 7.80, 1),
             };
 
-            return new Team(Teams.Power, 4.20, players);
+            return new Team(Teams.Power, 0, players);
         }
 
         private static Team CreateRam()
         {
             var players = new List<Player>
             {
-                new("Christian McCaffrey", 35.00, 1),
-                new("Kyren Williams", 15.00, 1),
+                new("Drake London", 15.50, 2),
+                new("TreVeyon Henderson", 7.00, 2),
             };
 
             return new Team(Teams.Ram, 0, players);
